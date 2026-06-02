@@ -1,0 +1,52 @@
+---
+import config from "virtual:starlight/user-config";
+import { Icon } from "@astrojs/starlight/components";
+
+const links = config.social || [];
+---
+
+<a class="header-link" href="https://youmiya.love">Main Site</a>
+<a class="header-link" href="https://console.youmiya.love">Console</a>
+{
+  links.map(({ label, href, icon }) => (
+    <a {href} aria-label={label} class="icon-link" rel="me">
+      <Icon name={icon} />
+    </a>
+  ))
+}
+
+<style>
+  @layer starlight.core {
+    a {
+      color: var(--sl-color-text-accent);
+    }
+
+    .header-link {
+      display: inline-flex;
+      align-items: center;
+      min-height: 2rem;
+      padding: 0 0.75rem;
+      border: 1px solid var(--sl-color-gray-5);
+      border-radius: 0.5rem;
+      color: var(--sl-color-text);
+      font-size: var(--sl-text-sm);
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .header-link:hover {
+      border-color: var(--sl-color-accent);
+      color: var(--sl-color-text-accent);
+    }
+
+    .icon-link {
+      display: inline-flex;
+      padding: 0.5em;
+      margin: -0.5em;
+    }
+
+    .icon-link:hover {
+      opacity: 0.66;
+    }
+  }
+</style>

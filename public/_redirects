@@ -1,0 +1,15 @@
+/ /zh-cn/ 301
+/getting-started /en/getting-started 301
+/authentication /en/authentication 301
+/rate-limits /en/rate-limits 301
+/errors /en/errors 301
+/data-license /en/data-license 301
+/contributing /en/contributing 301
+/funding /en/funding 301
+/common-specifications/* /en/common-specifications/:splat 301
+/core-concepts/* /en/core-concepts/:splat 301
+/core-models/* /en/core-models/:splat 301
+/standard-key-registry /en/standard-key-registry 301
+/standard-key-registry/* /en/standard-key-registry/:splat 301
+/zh-CN /zh-cn 301
+/zh-CN/* /zh-cn/:splat 301

@@ -1,0 +1,72 @@
+---
+title: Project（企划）
+description: Planning Project 最小公开字段。
+---
+
+`Project` 是 Franchise 下的独立企划、产品线或世界观分支。
+
+Franchise 关系数据和扩展字段会在公开契约稳定后补充。
+
+通用的[资源 JSON 语义](../../../common-specifications/response-envelope/#资源-json-语义)定义了 API 资源对象的全字段返回、零值占位和弱引用规则。
+
+## 模型定义
+
+### 主属性
+
+主属性描述 Project 自身。本轮只记录全局稳定的最小字段。
+
+| Field | Type | supported | Description |
+| --- | --- | --- | --- |
+| `id` | string | ✓ | 由 `key` 生成的稳定公开 ID；客户端应视为 opaque。 |
+| `key` | string | ✓ | 全局唯一稳定 key，用于过滤和跨域引用。 |
+| `name` | string | ✓ | 规范名称。 |
+
+其他字段会在公开契约稳定后再补充。
+
+## HTTP 路由
+
+公开 OpenAPI 规范是路由契约的事实来源。
+
+| Method | Path | 说明 |
+| --- | --- | --- |
+| `GET` | `/openapi/v1/projects` | 获取 Project 列表。 |
+| `GET` | `/openapi/v1/projects/{key}` | 按 `key` 获取单个 Project。 |
+
+列表路由支持 cursor 分页：
+
+| Query | Type | 说明 |
+| --- | --- | --- |
+| `limit` | number | 每页数量；默认 `100`，最大 `500`。 |
+| `cursor` | opaque string | 上一页响应 `meta.nextCursor` 返回的 opaque cursor。 |
+
+列表响应包含 `meta.limit`、`meta.cursor`、`meta.nextCursor` 和 `meta.hasMore`。
+
+### Project `data` payload
+
+```json
+{
+  "id": "project_bandori",
+  "key": "bandori",
+  "name": "BanG Dream! Girls Band Party!"
+}
+```
+
+### Project 列表响应
+
+```json
+{
+  "data": [
+    {
+      "id": "project_bandori",
+      "key": "bandori",
+      "name": "BanG Dream! Girls Band Party!"
+    }
+  ],
+  "meta": {
+    "limit": 100,
+    "cursor": "",
+    "nextCursor": null,
+    "hasMore": false
+  }
+}
+```

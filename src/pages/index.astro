@@ -1,0 +1,19 @@
+---
+const target = "/zh-cn/";
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="refresh" content={`0; url=${target}`} />
+    <link rel="canonical" href={target} />
+    <title>Redirecting to OpenYoumiya Docs</title>
+    <script is:inline>
+      window.location.replace("/zh-cn/");
+    </script>
+  </head>
+  <body>
+    <p><a href={target}>Continue to OpenYoumiya Docs</a></p>
+  </body>
+</html>

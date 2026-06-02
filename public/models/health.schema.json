@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://docs.youmiya.love/models/health.schema.json",
+  "title": "HealthResponse",
+  "type": "object",
+  "required": ["data"],
+  "properties": {
+    "data": {
+      "type": "object",
+      "required": ["status"],
+      "properties": {
+        "status": { "const": "ok" }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
