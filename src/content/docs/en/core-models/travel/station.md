@@ -5,7 +5,7 @@ description: Travel station model with minimal public fields.
 
 `Station` is a rail, metro, bus, or transit station resource.
 
-The common [resource JSON semantics](../../../common-specifications/response-envelope/#resource-json-semantics) define full-field responses, zero-value placeholders, and weak references for API resource objects.
+
 
 ## Model definition
 

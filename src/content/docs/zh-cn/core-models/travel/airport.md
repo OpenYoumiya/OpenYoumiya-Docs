@@ -5,7 +5,7 @@ description: Travel Airport 最小公开字段。
 
 `Airport` 是远征数据使用的机场资源。
 
-通用的[资源 JSON 语义](../../../common-specifications/response-envelope/#资源-json-语义)定义了 API 资源对象的全字段返回、零值占位和弱引用规则。
+
 
 ## 模型定义
 

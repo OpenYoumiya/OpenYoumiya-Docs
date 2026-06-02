@@ -64,7 +64,8 @@ OpenYoumiya 将**稳定主数据**与**动态行为数据**分开建模。主数
 
 主属性描述资源自身。如果某个值是该实体固有的元数据，就放在对应的强类型资源上。
 
-* *示例*：`Project.displayName` 属于 Project；`Venue.address` 属于 Venue；`Song.durationSeconds` 属于 Song。
+*示例*：`Project.displayName` 属于 Project；`Venue.address` 属于 Venue；
+`Song.durationSeconds` 属于 Song。
 
 ### 2. 关联属性
 

@@ -5,7 +5,7 @@ description: Session 到 setlist song 的一对多关系模型。
 
 `SessionSetlist` 在歌单上下文中连接一个 `EventSession` 与一个 `Song`。它替代旧的 Event 级 setlist 模型，使歌单归属到具体场次。
 
-通用的[资源 JSON 语义](../../../common-specifications/response-envelope/#资源-json-语义)定义了 API 资源对象的全字段返回、零值占位和弱引用规则。
+
 
 ## 模型定义
 

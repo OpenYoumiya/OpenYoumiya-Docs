@@ -7,7 +7,7 @@ description: Roles character model with minimal public fields.
 
 Connections to Project and Group are represented by `CharacterProject` and `CharacterGroup` relationship resources.
 
-The common [resource JSON semantics](../../../common-specifications/response-envelope/#resource-json-semantics) define full-field responses, zero-value placeholders, and weak references for API resource objects.
+
 
 ## Model definition
 

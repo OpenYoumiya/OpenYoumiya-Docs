@@ -7,7 +7,7 @@ description: Roles seiyuu model with minimal public fields.
 
 Connections to Agency and Character are represented through relationship data outside the Seiyuu core fields.
 
-The common [resource JSON semantics](../../../common-specifications/response-envelope/#resource-json-semantics) define full-field responses, zero-value placeholders, and weak references for API resource objects.
+
 
 ## Model definition
 

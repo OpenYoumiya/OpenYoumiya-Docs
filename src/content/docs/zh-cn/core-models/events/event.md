@@ -7,8 +7,6 @@ description: Event 最小公开字段。
 
 Project、Group、Cast、Seiyuu、Session、Venue、Timeline、Setlist 等数据属于关系或读取视图，不写进 Event 主属性。
 
-通用的[资源 JSON 语义](../../../common-specifications/response-envelope/#资源-json-语义)定义了 API 资源对象的全字段返回、零值占位和弱引用规则。
-
 ## 模型定义
 
 ### 主属性

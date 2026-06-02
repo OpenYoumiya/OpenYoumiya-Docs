@@ -5,7 +5,7 @@ description: Session one-to-many relationship model for setlist songs.
 
 `SessionSetlist` connects one `EventSession` and one `Song` in a setlist context. It replaces the older Event-level setlist model so setlists are scoped to sessions.
 
-The common [resource JSON semantics](../../../common-specifications/response-envelope/#resource-json-semantics) define full-field responses, zero-value placeholders, and weak references for API resource objects.
+
 
 ## Model definition
 

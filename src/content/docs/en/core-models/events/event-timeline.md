@@ -5,7 +5,7 @@ description: Event one-to-many relationship model for timeline items.
 
 `EventTimelineItem` represents one timeline item under one `Event`. It is modeled as a one-to-many relationship resource from Event to Timeline.
 
-The common [resource JSON semantics](../../../common-specifications/response-envelope/#resource-json-semantics) define full-field responses, zero-value placeholders, and weak references for API resource objects.
+
 
 ## Model definition
 

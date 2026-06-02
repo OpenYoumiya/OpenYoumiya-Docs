@@ -5,7 +5,7 @@ description: Travel airport model with minimal public fields.
 
 `Airport` is an airport resource used by travel data.
 
-The common [resource JSON semantics](../../../common-specifications/response-envelope/#resource-json-semantics) define full-field responses, zero-value placeholders, and weak references for API resource objects.
+
 
 ## Model definition
 

@@ -7,7 +7,7 @@ description: Planning Group 最小公开字段。
 
 Group 与 Project 的成员关系由 `ProjectGroup` 表达，不写在 Group 主记录的单值字段上。
 
-通用的[资源 JSON 语义](../../../common-specifications/response-envelope/#资源-json-语义)定义了 API 资源对象的全字段返回、零值占位和弱引用规则。
+
 
 ## 模型定义
 

@@ -5,7 +5,7 @@ description: Roles relationship model between Character and Seiyuu resources.
 
 `Cast` connects one `Character` and one `Seiyuu`.
 
-The common [resource JSON semantics](../../../common-specifications/response-envelope/#resource-json-semantics) define full-field responses, zero-value placeholders, and weak references for API resource objects.
+
 
 ## Model definition
 

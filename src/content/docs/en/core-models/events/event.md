@@ -7,7 +7,7 @@ description: Event model with minimal public fields.
 
 Project, Group, Cast, Seiyuu, Session, Venue, timeline, and setlist data are relationship or read-view data outside the Event core fields.
 
-The common [resource JSON semantics](../../../common-specifications/response-envelope/#resource-json-semantics) define full-field responses, zero-value placeholders, and weak references for API resource objects.
+
 
 ## Model definition
 

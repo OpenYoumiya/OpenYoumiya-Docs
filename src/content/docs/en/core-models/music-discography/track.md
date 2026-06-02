@@ -5,7 +5,7 @@ description: Music relationship model between Release and Song resources.
 
 `Track` connects one `Release` and one `Song`.
 
-The common [resource JSON semantics](../../../common-specifications/response-envelope/#resource-json-semantics) define full-field responses, zero-value placeholders, and weak references for API resource objects.
+
 
 ## Model definition
 

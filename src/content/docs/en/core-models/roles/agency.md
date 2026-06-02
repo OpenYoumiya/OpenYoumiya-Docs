@@ -5,7 +5,7 @@ description: Roles agency model with minimal public fields.
 
 `Agency` is a seiyuu management agency, office, or organization resource.
 
-The common [resource JSON semantics](../../../common-specifications/response-envelope/#resource-json-semantics) define full-field responses, zero-value placeholders, and weak references for API resource objects.
+
 
 ## Model definition
 

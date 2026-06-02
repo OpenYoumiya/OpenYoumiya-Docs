@@ -5,7 +5,7 @@ description: Event one-to-many relationship model for sessions.
 
 `EventSession` represents one Session under one `Event`. It is modeled as a one-to-many relationship resource from Event to Session.
 
-The common [resource JSON semantics](../../../common-specifications/response-envelope/#resource-json-semantics) define full-field responses, zero-value placeholders, and weak references for API resource objects.
+
 
 ## Model definition
 
