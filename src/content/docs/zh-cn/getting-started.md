@@ -11,7 +11,7 @@ OpenYoumiya API 封装并公开了主站的结构化数据。本指南将帮助�
 
 ```bash
 curl -H "Authorization: Bearer $OPENYOUMIYA_API_TOKEN" \
-  "https://openapi.youmiya.love/v1/events"
+  "https://open.youmiya.love/api/v1/events"
 ```
 
 ⚠️ 安全规范

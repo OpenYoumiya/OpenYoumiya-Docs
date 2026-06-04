@@ -35,6 +35,7 @@ const coreModelFiles = coreModelSpecs.flatMap(({ slug }) => [
 
 const requiredDocs = [
   "../src/content/docs/en/index.md",
+  "../src/content/docs/en/api-reference.md",
   "../src/content/docs/en/data-license.md",
   "../src/content/docs/en/contributing.md",
   "../src/content/docs/en/funding.md",
@@ -45,6 +46,7 @@ const requiredDocs = [
   "../src/content/docs/en/common-specifications/response-envelope.md",
   ...coreModelFiles,
   "../src/content/docs/zh-cn/index.md",
+  "../src/content/docs/zh-cn/api-reference.md",
   "../src/content/docs/zh-cn/core-concepts/overview.md",
   "../src/content/docs/zh-cn/core-concepts/data-models-hierarchy.md",
   "../src/content/docs/zh-cn/common-specifications/base-fields.md",
@@ -61,14 +63,15 @@ const requiredDocs = [
 
 test("OpenAPI server uses the public API base", async () => {
   const spec = await readFile(new URL("../public/openapi/openapi.yaml", import.meta.url), "utf8");
-  assert.match(spec, /url: https:\/\/openapi\.youmiya\.love/);
+  assert.match(spec, /url: https:\/\/open\.youmiya\.love/);
+  assert.match(spec, /\/api\/v1\/healthz/);
 });
 
 test("examples use the public API base", async () => {
   const curl = await readFile(new URL("../examples/curl.sh", import.meta.url), "utf8");
   const client = await readFile(new URL("../examples/typescript/client.ts", import.meta.url), "utf8");
-  assert.match(curl, /https:\/\/openapi\.youmiya\.love/);
-  assert.match(client, /https:\/\/openapi\.youmiya\.love/);
+  assert.match(curl, /https:\/\/open\.youmiya\.love\/api\/v1/);
+  assert.match(client, /https:\/\/open\.youmiya\.love/);
 });
 
 test("getting started documents main-site data source", async () => {
@@ -148,9 +151,9 @@ test("community and support docs use license, contribution, and sponsorship word
   const contents = await Promise.all(files.map((file) => readFile(new URL(file, import.meta.url), "utf8")));
   const joined = contents.join("\n");
   assert.match(joined, /CC BY 4\.0|Creative Commons Attribution 4\.0/);
-  assert.match(joined, /Data provided by OpenYoumiya API \(https:\/\/openapi\.youmiya\.love\)/);
-  assert.match(joined, /Data Source: \[OpenYoumiya API\]\(https:\/\/openapi\.youmiya\.love\)/);
-  assert.match(joined, /Data Source: <a href="https:\/\/openapi\.youmiya\.love" target="_blank" rel="noopener noreferrer">OpenYoumiya API<\/a>/);
+  assert.match(joined, /Data provided by OpenYoumiya API \(https:\/\/open\.youmiya\.love\)/);
+  assert.match(joined, /Data Source: \[OpenYoumiya API\]\(https:\/\/open\.youmiya\.love\)/);
+  assert.match(joined, /Data Source: <a href="https:\/\/open\.youmiya\.love" target="_blank" rel="noopener noreferrer">OpenYoumiya API<\/a>/);
   assert.match(joined, /main OpenYoumiya site|主站 OpenYoumiya/);
   assert.doesNotMatch(joined, /create and update requests|创建和修改请求|Pending submissions|pending 提交/);
   assert.match(joined, /GitHub Issues/);

@@ -24,7 +24,21 @@ description: Roles Character 与 Group 关系的最小公开字段。
 
 ## HTTP 路由
 
-公开 OpenAPI 规范是路由契约的事实来源。本节只展示最小 `CharacterGroup` `data` payload 形态。
+公开 OpenAPI 规范是路由契约的事实来源。
+
+| Method | Path | Description |
+| --- | --- | --- |
+| `GET` | `/api/v1/character-groups` | 列出 Character 与 Group 关系。 |
+| `GET` | `/api/v1/character-groups/{key}` | 通过 `key` 获取单条 Character 与 Group 关系。 |
+
+列表路由支持 cursor 分页：
+
+| Query | Type | Description |
+| --- | --- | --- |
+| `limit` | number | 每页数量。默认 `100`，最大 `500`。 |
+| `cursor` | opaque string | 上一次响应 `meta.nextCursor` 返回的 opaque cursor。 |
+
+列表响应包含 `meta.limit`、`meta.cursor`、`meta.nextCursor` 和 `meta.hasMore`。
 
 ### CharacterGroup `data` payload
 
@@ -34,5 +48,26 @@ description: Roles Character 与 Group 关系的最小公开字段。
   "key": "takamatsu_tomori_mygo",
   "characterKey": "takamatsu_tomori",
   "groupKey": "mygo"
+}
+```
+
+### CharacterGroup 列表响应
+
+```json
+{
+  "data": [
+    {
+      "id": "character_group_takamatsu_tomori_mygo",
+      "key": "takamatsu_tomori_mygo",
+      "characterKey": "takamatsu_tomori",
+      "groupKey": "mygo"
+    }
+  ],
+  "meta": {
+    "limit": 100,
+    "cursor": "",
+    "nextCursor": null,
+    "hasMore": false
+  }
 }
 ```

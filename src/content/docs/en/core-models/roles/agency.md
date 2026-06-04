@@ -23,7 +23,21 @@ Additional fields can be added later after their public contract is stable.
 
 ## HTTP routes
 
-The public OpenAPI specification is the source of truth for route contracts. This section only shows the minimal `Agency` `data` payload shape.
+The public OpenAPI specification is the source of truth for route contracts.
+
+| Method | Path | Description |
+| --- | --- | --- |
+| `GET` | `/api/v1/agencies` | List agencies. |
+| `GET` | `/api/v1/agencies/{key}` | Get one agency by `key`. |
+
+List routes support cursor pagination:
+
+| Query | Type | Description |
+| --- | --- | --- |
+| `limit` | number | Page size. Defaults to `100` and is capped at `500`. |
+| `cursor` | opaque string | Opaque cursor from the previous response `meta.nextCursor`. |
+
+List responses include `meta.limit`, `meta.cursor`, `meta.nextCursor`, and `meta.hasMore`.
 
 ### Agency `data` payload
 
@@ -32,5 +46,25 @@ The public OpenAPI specification is the source of truth for route contracts. Thi
   "id": "agency_aoni_production",
   "key": "aoni_production",
   "name": "青二プロダクション"
+}
+```
+
+### Agency list response
+
+```json
+{
+  "data": [
+    {
+      "id": "agency_aoni_production",
+      "key": "aoni_production",
+      "name": "青二プロダクション"
+    }
+  ],
+  "meta": {
+    "limit": 100,
+    "cursor": "",
+    "nextCursor": null,
+    "hasMore": false
+  }
 }
 ```

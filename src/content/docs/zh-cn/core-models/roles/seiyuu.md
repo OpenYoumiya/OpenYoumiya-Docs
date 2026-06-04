@@ -25,7 +25,21 @@ Seiyuu 与 Agency、Character 的连接通过关系数据表达，不写进 Seiy
 
 ## HTTP 路由
 
-公开 OpenAPI 规范是路由契约的事实来源。本节只展示最小 `Seiyuu` `data` payload 形态。
+公开 OpenAPI 规范是路由契约的事实来源。
+
+| Method | Path | Description |
+| --- | --- | --- |
+| `GET` | `/api/v1/seiyuus` | 列出 Seiyuus。 |
+| `GET` | `/api/v1/seiyuus/{key}` | 通过 `key` 获取单个 Seiyuu。 |
+
+列表路由支持 cursor 分页：
+
+| Query | Type | Description |
+| --- | --- | --- |
+| `limit` | number | 每页数量。默认 `100`，最大 `500`。 |
+| `cursor` | opaque string | 上一次响应 `meta.nextCursor` 返回的 opaque cursor。 |
+
+列表响应包含 `meta.limit`、`meta.cursor`、`meta.nextCursor` 和 `meta.hasMore`。
 
 ### Seiyuu `data` payload
 
@@ -34,5 +48,25 @@ Seiyuu 与 Agency、Character 的连接通过关系数据表达，不写进 Seiy
   "id": "seiyuu_youmiya_hina",
   "key": "youmiya_hina",
   "name": "羊宮妃那"
+}
+```
+
+### Seiyuu 列表响应
+
+```json
+{
+  "data": [
+    {
+      "id": "seiyuu_youmiya_hina",
+      "key": "youmiya_hina",
+      "name": "羊宮妃那"
+    }
+  ],
+  "meta": {
+    "limit": 100,
+    "cursor": "",
+    "nextCursor": null,
+    "hasMore": false
+  }
 }
 ```

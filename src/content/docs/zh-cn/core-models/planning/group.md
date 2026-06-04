@@ -29,8 +29,8 @@ Group 与 Project 的成员关系由 `ProjectGroup` 表达，不写在 Group 主
 
 | Method | Path | 说明 |
 | --- | --- | --- |
-| `GET` | `/openapi/v1/groups` | 获取 Group 列表。 |
-| `GET` | `/openapi/v1/groups/{key}` | 按 `key` 获取单个 Group。 |
+| `GET` | `/api/v1/groups` | 获取 Group 列表。 |
+| `GET` | `/api/v1/groups/{key}` | 按 `key` 获取单个 Group。 |
 
 列表路由支持 cursor 分页：
 

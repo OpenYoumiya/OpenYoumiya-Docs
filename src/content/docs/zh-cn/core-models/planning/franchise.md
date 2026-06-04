@@ -29,8 +29,8 @@ description: Planning Franchise 最小公开字段。
 
 | Method | Path | 说明 |
 | --- | --- | --- |
-| `GET` | `/openapi/v1/franchises` | 获取 Franchise 列表。 |
-| `GET` | `/openapi/v1/franchises/{key}` | 按 `key` 获取单个 Franchise。 |
+| `GET` | `/api/v1/franchises` | 获取 Franchise 列表。 |
+| `GET` | `/api/v1/franchises/{key}` | 按 `key` 获取单个 Franchise。 |
 
 列表路由支持 cursor 分页：
 

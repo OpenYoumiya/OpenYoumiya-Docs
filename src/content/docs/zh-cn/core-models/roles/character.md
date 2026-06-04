@@ -25,7 +25,21 @@ Character 与 Project、Group 的连接由 `CharacterProject` 与 `CharacterGrou
 
 ## HTTP 路由
 
-公开 OpenAPI 规范是路由契约的事实来源。本节只展示最小 `Character` `data` payload 形态。
+公开 OpenAPI 规范是路由契约的事实来源。
+
+| Method | Path | Description |
+| --- | --- | --- |
+| `GET` | `/api/v1/characters` | 列出 Characters。 |
+| `GET` | `/api/v1/characters/{key}` | 通过 `key` 获取单个 Character。 |
+
+列表路由支持 cursor 分页：
+
+| Query | Type | Description |
+| --- | --- | --- |
+| `limit` | number | 每页数量。默认 `100`，最大 `500`。 |
+| `cursor` | opaque string | 上一次响应 `meta.nextCursor` 返回的 opaque cursor。 |
+
+列表响应包含 `meta.limit`、`meta.cursor`、`meta.nextCursor` 和 `meta.hasMore`。
 
 ### Character `data` payload
 
@@ -34,5 +48,25 @@ Character 与 Project、Group 的连接由 `CharacterProject` 与 `CharacterGrou
   "id": "character_takamatsu_tomori",
   "key": "takamatsu_tomori",
   "name": "高松燈"
+}
+```
+
+### Character 列表响应
+
+```json
+{
+  "data": [
+    {
+      "id": "character_takamatsu_tomori",
+      "key": "takamatsu_tomori",
+      "name": "高松燈"
+    }
+  ],
+  "meta": {
+    "limit": 100,
+    "cursor": "",
+    "nextCursor": null,
+    "hasMore": false
+  }
 }
 ```

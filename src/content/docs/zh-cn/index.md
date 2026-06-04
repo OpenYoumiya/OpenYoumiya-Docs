@@ -14,8 +14,8 @@ OpenYoumiya API 为正在构建粉丝站点、活动、声优/角色资料库、
 
 ## API base
 
-```HTTP
-https://openapi.youmiya.love
+```http
+https://open.youmiya.love
 ```
 
 ## 项目初衷
@@ -31,12 +31,12 @@ OpenYoumiya 的诞生，就是为了打破这种数据孤岛。我们希望通�
 - 获取凭证：前往 Console 页面创建和管理你的 API Token。
 - 鉴权方式：请求时请在 Header 中携带 Bearer 令牌：
 
-```HTTP
+```http
 Authorization: Bearer <OPENYOUMIYA_API_TOKEN>
 ```
 
 - 数据一致性：OpenYoumiya API 返回的数据由主站数据异步同步至开放平台数据层，兼顾性能与实时性。
-- 统一协议：后续所有资源标识（Key）的调用，请参考[数据模型与层级](./core-concepts/data-models-and-hierarchy)和[标准注册表](./standard-key-registry)文档中的统一协议字典。
+- 统一协议：后续所有资源标识（Key）的调用，请参考[数据模型与层级](./core-concepts/data-models-hierarchy/)和[标准注册表](./standard-key-registry/)文档中的统一协议字典。
 
 ## 社区与支持
 

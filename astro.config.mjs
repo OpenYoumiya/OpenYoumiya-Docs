@@ -50,6 +50,11 @@ export default defineConfig({
               translations: { "zh-CN": "认证" },
             },
             {
+              label: "API Reference",
+              slug: "api-reference",
+              translations: { "zh-CN": "API Reference" },
+            },
+            {
               label: "Rate Limits",
               slug: "rate-limits",
               translations: { "zh-CN": "频次限制" },

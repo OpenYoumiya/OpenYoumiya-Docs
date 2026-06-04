@@ -14,7 +14,7 @@ Our goal is simple: make reliable public data available to everyone who loves th
 
 - Main site: [https://youmiya.love](https://youmiya.love)
 - Documentation site: [https://docs.youmiya.love](https://docs.youmiya.love)
-- API base: [https://openapi.youmiya.love](https://openapi.youmiya.love)
+- API base: [https://open.youmiya.love](https://open.youmiya.love)
 - Console: [https://console.youmiya.love](https://console.youmiya.love)
 - Data license: CC BY 4.0
 - Funding: [Afdian](https://ifdian.net/a/OpenYoumiya)
@@ -50,7 +50,7 @@ Our goal is simple: make reliable public data available to everyone who loves th
 
 1. Read the docs at [https://docs.youmiya.love](https://docs.youmiya.love).
 2. Create an API token in the [Console](https://console.youmiya.love).
-3. Call the API base at [https://openapi.youmiya.love](https://openapi.youmiya.love) with your Bearer token.
+3. Call the API base at [https://open.youmiya.love](https://open.youmiya.love) with your Bearer token.
 4. Use the data model hierarchy and standard key registry as the protocol dictionary for resource keys.
 5. Review the data license, contribution flow, and funding page before publishing an integration.
 

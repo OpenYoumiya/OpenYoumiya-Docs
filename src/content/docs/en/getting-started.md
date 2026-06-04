@@ -11,7 +11,7 @@ OpenYoumiya API wraps and exposes structured data from the main OpenYoumiya site
 
 ```bash
 curl -H "Authorization: Bearer $OPENYOUMIYA_API_TOKEN" \
-  "https://openapi.youmiya.love/v1/events"
+  "https://open.youmiya.love/api/v1/events"
 ```
 
 ## Security note

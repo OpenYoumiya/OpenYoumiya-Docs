@@ -29,8 +29,8 @@ Franchise 关系数据和扩展字段会在公开契约稳定后补充。
 
 | Method | Path | 说明 |
 | --- | --- | --- |
-| `GET` | `/openapi/v1/projects` | 获取 Project 列表。 |
-| `GET` | `/openapi/v1/projects/{key}` | 按 `key` 获取单个 Project。 |
+| `GET` | `/api/v1/projects` | 获取 Project 列表。 |
+| `GET` | `/api/v1/projects/{key}` | 按 `key` 获取单个 Project。 |
 
 列表路由支持 cursor 分页：
 

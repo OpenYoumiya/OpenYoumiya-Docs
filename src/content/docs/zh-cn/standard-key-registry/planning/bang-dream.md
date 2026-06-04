@@ -31,6 +31,8 @@ roselia,Roselia
 hello_happy_world,ハロー、ハッピーワールド！
 raise_a_suilen,RAISE A SUILEN
 morfonica,Morfonica
+crychic,CRYCHIC
+sumimi,sumimi
 mygo,MyGO!!!!!
 ave_mujica,Ave Mujica
 yumemita,夢限大みゅーたいぷ
@@ -49,6 +51,8 @@ bandori_roselia,bandori,roselia
 bandori_hello_happy_world,bandori,hello_happy_world
 bandori_raise_a_suilen,bandori,raise_a_suilen
 bandori_morfonica,bandori,morfonica
+bandori_crychic,bandori,crychic
+bandori_sumimi,bandori,sumimi
 bandori_mygo,bandori,mygo
 our_notes_mygo,our_notes,mygo
 our_notes_ave_mujica,our_notes,ave_mujica

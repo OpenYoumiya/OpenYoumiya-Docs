@@ -14,7 +14,7 @@ OpenYoumiya API 为粉丝站点、活动工具、声优与角色资料库、数�
 
 - 主站：[https://youmiya.love](https://youmiya.love)
 - 文档站：[https://docs.youmiya.love](https://docs.youmiya.love)
-- API base：[https://openapi.youmiya.love](https://openapi.youmiya.love)
+- API base：[https://open.youmiya.love](https://open.youmiya.love)
 - 控制台：[https://console.youmiya.love](https://console.youmiya.love)
 - 数据协议：CC BY 4.0
 - 资金支持：[爱发电](https://ifdian.net/a/OpenYoumiya)
@@ -50,7 +50,7 @@ OpenYoumiya API 为粉丝站点、活动工具、声优与角色资料库、数�
 
 1. 阅读文档：[https://docs.youmiya.love](https://docs.youmiya.love)。
 2. 在 [Console](https://console.youmiya.love) 创建 API token。
-3. 使用 Bearer token 调用 API base：[https://openapi.youmiya.love](https://openapi.youmiya.love)。
+3. 使用 Bearer token 调用 API base：[https://open.youmiya.love](https://open.youmiya.love)。
 4. 使用数据模型层级和标准注册表作为资源 key 的协议字典。
 5. 发布集成前，请阅读数据使用协议、贡献流程和资金支持页面。
 

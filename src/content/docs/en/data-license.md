@@ -18,19 +18,19 @@ We recommend and encourage the following formats:
 - Plain text:
 
 ```plaintext
-Data provided by OpenYoumiya API (https://openapi.youmiya.love)
+Data provided by OpenYoumiya API (https://open.youmiya.love)
 ```
 
 - Markdown:
 
 ```md
-Data Source: [OpenYoumiya API](https://openapi.youmiya.love)
+Data Source: [OpenYoumiya API](https://open.youmiya.love)
 ```
 
 - HTML:
 
 ```html
-Data Source: <a href="https://openapi.youmiya.love" target="_blank" rel="noopener noreferrer">OpenYoumiya API</a>
+Data Source: <a href="https://open.youmiya.love" target="_blank" rel="noopener noreferrer">OpenYoumiya API</a>
 ```
 
 Derived data notice: if you clean, restructure, merge, or substantially derive from OpenYoumiya's original public data, clearly state that the data is based on modified OpenYoumiya source data. This avoids misleading downstream users about the data source.

@@ -25,7 +25,21 @@ Additional fields can be added later after their public contract is stable.
 
 ## HTTP routes
 
-The public OpenAPI specification is the source of truth for route contracts. This section only shows the minimal `Character` `data` payload shape.
+The public OpenAPI specification is the source of truth for route contracts.
+
+| Method | Path | Description |
+| --- | --- | --- |
+| `GET` | `/api/v1/characters` | List characters. |
+| `GET` | `/api/v1/characters/{key}` | Get one character by `key`. |
+
+List routes support cursor pagination:
+
+| Query | Type | Description |
+| --- | --- | --- |
+| `limit` | number | Page size. Defaults to `100` and is capped at `500`. |
+| `cursor` | opaque string | Opaque cursor from the previous response `meta.nextCursor`. |
+
+List responses include `meta.limit`, `meta.cursor`, `meta.nextCursor`, and `meta.hasMore`.
 
 ### Character `data` payload
 
@@ -34,5 +48,25 @@ The public OpenAPI specification is the source of truth for route contracts. Thi
   "id": "character_takamatsu_tomori",
   "key": "takamatsu_tomori",
   "name": "高松燈"
+}
+```
+
+### Character list response
+
+```json
+{
+  "data": [
+    {
+      "id": "character_takamatsu_tomori",
+      "key": "takamatsu_tomori",
+      "name": "高松燈"
+    }
+  ],
+  "meta": {
+    "limit": 100,
+    "cursor": "",
+    "nextCursor": null,
+    "hasMore": false
+  }
 }
 ```

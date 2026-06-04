@@ -19,11 +19,29 @@ description: Venue 最小公开字段。
 | `key` | string | ✓ | 全局唯一稳定 key，用于过滤和跨域引用。 |
 | `name` | string | ✓ | 规范名称。 |
 
+公开 API 会在接口边界生成 `id`；内部数据库 UUID 不属于公开契约。
+
 其他字段会在公开契约稳定后再补充。
 
 ## HTTP 路由
 
-公开 OpenAPI 规范是路由契约的事实来源。本节只展示最小 `Venue` `data` payload 形态。
+公开 OpenAPI 规范是路由契约的事实来源。
+
+| Method | Path | Description |
+| --- | --- | --- |
+| `GET` | `/api/v1/venues` | 获取 Venue 列表。 |
+| `GET` | `/api/v1/venues/{key}` | 按 `key` 获取单个 Venue。 |
+
+列表路由支持 cursor 分页：
+
+| Query | Type | Description |
+| --- | --- | --- |
+| `limit` | number | 单页数量，默认 `100`，最大 `500`。 |
+| `cursor` | opaque string | 上一页响应 `meta.nextCursor` 返回的不透明 cursor。 |
+
+列表响应包含 `meta.limit`、`meta.cursor`、`meta.nextCursor` 和 `meta.hasMore`。
+
+详情响应只包含 `data`，不包含列表 `meta`。
 
 ### Venue `data` payload
 
@@ -32,5 +50,37 @@ description: Venue 最小公开字段。
   "id": "venue_tokyo_garden_theater",
   "key": "tokyo_garden_theater",
   "name": "Tokyo Garden Theater"
+}
+```
+
+### Venue 详情响应
+
+```json
+{
+  "data": {
+    "id": "venue_tokyo_garden_theater",
+    "key": "tokyo_garden_theater",
+    "name": "Tokyo Garden Theater"
+  }
+}
+```
+
+### Venue 列表响应
+
+```json
+{
+  "data": [
+    {
+      "id": "venue_tokyo_garden_theater",
+      "key": "tokyo_garden_theater",
+      "name": "Tokyo Garden Theater"
+    }
+  ],
+  "meta": {
+    "limit": 100,
+    "cursor": "",
+    "nextCursor": null,
+    "hasMore": false
+  }
 }
 ```

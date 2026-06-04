@@ -23,7 +23,21 @@ description: Roles Agency 最小公开字段。
 
 ## HTTP 路由
 
-公开 OpenAPI 规范是路由契约的事实来源。本节只展示最小 `Agency` `data` payload 形态。
+公开 OpenAPI 规范是路由契约的事实来源。
+
+| Method | Path | Description |
+| --- | --- | --- |
+| `GET` | `/api/v1/agencies` | 列出 Agencies。 |
+| `GET` | `/api/v1/agencies/{key}` | 通过 `key` 获取单个 Agency。 |
+
+列表路由支持 cursor 分页：
+
+| Query | Type | Description |
+| --- | --- | --- |
+| `limit` | number | 每页数量。默认 `100`，最大 `500`。 |
+| `cursor` | opaque string | 上一次响应 `meta.nextCursor` 返回的 opaque cursor。 |
+
+列表响应包含 `meta.limit`、`meta.cursor`、`meta.nextCursor` 和 `meta.hasMore`。
 
 ### Agency `data` payload
 
@@ -32,5 +46,25 @@ description: Roles Agency 最小公开字段。
   "id": "agency_aoni_production",
   "key": "aoni_production",
   "name": "青二プロダクション"
+}
+```
+
+### Agency 列表响应
+
+```json
+{
+  "data": [
+    {
+      "id": "agency_aoni_production",
+      "key": "aoni_production",
+      "name": "青二プロダクション"
+    }
+  ],
+  "meta": {
+    "limit": 100,
+    "cursor": "",
+    "nextCursor": null,
+    "hasMore": false
+  }
 }
 ```

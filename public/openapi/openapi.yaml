@@ -3,11 +3,11 @@ info:
   title: OpenYoumiya Open API
   version: 0.1.0
 servers:
-  - url: https://openapi.youmiya.love
+  - url: https://open.youmiya.love
 security:
   - bearerAuth: []
 paths:
-  /v1/healthz:
+  /api/v1/healthz:
     get:
       summary: Health check
       security: []
@@ -18,7 +18,7 @@ paths:
             application/json:
               schema:
                 $ref: "../models/health.schema.json"
-  /v1/events:
+  /api/v1/events:
     get:
       summary: Events placeholder
       responses:

@@ -29,8 +29,8 @@ The public OpenAPI specification is the source of truth for route contracts.
 
 | Method | Path | Description |
 | --- | --- | --- |
-| `GET` | `/openapi/v1/groups` | List groups. |
-| `GET` | `/openapi/v1/groups/{key}` | Get one group by `key`. |
+| `GET` | `/api/v1/groups` | List groups. |
+| `GET` | `/api/v1/groups/{key}` | Get one group by `key`. |
 
 List routes support cursor pagination:
 

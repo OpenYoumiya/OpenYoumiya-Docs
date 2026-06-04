@@ -29,8 +29,8 @@ The public OpenAPI specification is the source of truth for route contracts.
 
 | Method | Path | Description |
 | --- | --- | --- |
-| `GET` | `/openapi/v1/franchises` | List franchises. |
-| `GET` | `/openapi/v1/franchises/{key}` | Get one franchise by `key`. |
+| `GET` | `/api/v1/franchises` | List franchises. |
+| `GET` | `/api/v1/franchises/{key}` | Get one franchise by `key`. |
 
 List routes support cursor pagination:
 

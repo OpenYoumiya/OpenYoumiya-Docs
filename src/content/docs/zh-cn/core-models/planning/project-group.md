@@ -28,8 +28,8 @@ description: Planning Project 与 Group 关系的最小公开字段。
 
 | Method | Path | 说明 |
 | --- | --- | --- |
-| `GET` | `/openapi/v1/project-groups` | 获取 ProjectGroup 列表。 |
-| `GET` | `/openapi/v1/project-groups/{key}` | 按 `key` 获取单个 ProjectGroup。 |
+| `GET` | `/api/v1/project-groups` | 获取 ProjectGroup 列表。 |
+| `GET` | `/api/v1/project-groups/{key}` | 按 `key` 获取单个 ProjectGroup。 |
 
 列表路由支持 cursor 分页：
 

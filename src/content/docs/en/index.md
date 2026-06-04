@@ -15,7 +15,7 @@ You no longer need to start from fragile crawlers, inconsistent data formats, or
 ## API base
 
 ```http
-https://openapi.youmiya.love
+https://open.youmiya.love
 ```
 
 ## The Why

@@ -4,7 +4,7 @@ export type OpenYoumiyaClientOptions = {
 };
 
 export function createOpenYoumiyaClient(options: OpenYoumiyaClientOptions) {
-  const baseURL = options.baseURL ?? "https://openapi.youmiya.love";
+  const baseURL = options.baseURL ?? "https://open.youmiya.love";
   return {
     async get<T>(path: string): Promise<T> {
       const response = await fetch(`${baseURL}${path}`, {

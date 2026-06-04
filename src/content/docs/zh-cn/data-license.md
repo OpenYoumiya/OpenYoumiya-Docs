@@ -17,20 +17,20 @@ OpenYoumiya API 始终致力于构建一个开放、合规且富有活力的二�
 
 - 纯文本格式（Text）:
 
-```Plaintext
-Data provided by OpenYoumiya API (https://openapi.youmiya.love)
+```plaintext
+Data provided by OpenYoumiya API (https://open.youmiya.love)
 ```
 
 - Markdown格式:
 
 ```md
-Data Source: [OpenYoumiya API](https://openapi.youmiya.love)
+Data Source: [OpenYoumiya API](https://open.youmiya.love)
 ```
 
 - HTML 格式：
 
 ```html
-Data Source: <a href="https://openapi.youmiya.love" target="_blank" rel="noopener noreferrer">OpenYoumiya API</a>
+Data Source: <a href="https://open.youmiya.love" target="_blank" rel="noopener noreferrer">OpenYoumiya API</a>
 ```
 
 ⚠️ 派生数据说明：如果你对 OpenYoumiya 原始公开数据进行了清洗、结构重组、合并或大幅度派生修改，请在署名时明确说明“该数据基于 OpenYoumiya 原始数据加工/修改而成”，以避免对后续使用者造成数据源层面的误导。

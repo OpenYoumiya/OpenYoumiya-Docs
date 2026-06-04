@@ -28,8 +28,8 @@ The public OpenAPI specification is the source of truth for route contracts.
 
 | Method | Path | Description |
 | --- | --- | --- |
-| `GET` | `/openapi/v1/project-groups` | List project/group relations. |
-| `GET` | `/openapi/v1/project-groups/{key}` | Get one project/group relation by `key`. |
+| `GET` | `/api/v1/project-groups` | List project/group relations. |
+| `GET` | `/api/v1/project-groups/{key}` | Get one project/group relation by `key`. |
 
 List routes support cursor pagination:
 
