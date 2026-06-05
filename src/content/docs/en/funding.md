@@ -3,7 +3,7 @@ title: Funding
 description: Community sponsorship and operating cost support for OpenYoumiya API.
 ---
 
-OpenYoumiya API is kept freely available as infrastructure for the fan-creation community. Anyone can use it for free within the documented rate limits.
+OpenYoumiya API is kept freely available as infrastructure for the fan-creation community. Normal community projects can use it without upfront cost, while abusive traffic that harms shared availability may be handled by platform stability protection.
 
 As a project started and maintained by community fans at personal cost, reliable delivery depends on very real ongoing expenses. These include server scaling, high-bandwidth traffic, database backups and hosting, monitoring and auditing, and the daily cost of careful data research and maintenance.
 
