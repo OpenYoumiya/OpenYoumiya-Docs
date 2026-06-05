@@ -9,7 +9,7 @@ OpenYoumiya API provides stable, structured access to public data from the [main
 
 You no longer need to start from fragile crawlers, inconsistent data formats, or repeated low-level plumbing.
 
-- We handle public data synchronization, unified field conventions, API token authentication, rate limits, and highly available delivery.
+- We handle public data synchronization, unified field conventions, service stability protections, and highly available delivery.
 - You focus on the idea, the experience, and the work that connects the community.
 
 ## API base

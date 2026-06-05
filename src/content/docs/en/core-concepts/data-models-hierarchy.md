@@ -100,6 +100,7 @@ Each query-view route must include its response Schema and a JSON response examp
 OpenYoumiya strictly applies the same naming rules across resource pages, Schema, examples, and sync Payload:
 
 - Public JSON fields use `camelCase`.
+- Public URL path segments use `kebab-case`, for example `/api/v1/event-cards`.
 - SQL fields use `snake_case`.
 - Enum values use lowercase `snake_case`.
 - Time fields use ISO 8601 strings with UTC offset, for example `2026-06-01T10:00:00+09:00`.

@@ -163,8 +163,9 @@ test("community and support docs use license, contribution, and sponsorship word
   assert.match(joined, /Afdian|爱发电/);
   assert.match(joined, /https:\/\/ifdian\.net\/a\/OpenYoumiya/);
   assert.doesNotMatch(joined, /GitHub Sponsors/);
-  assert.match(joined, /free within documented rate limits|频次限制内免费使用/);
+  assert.match(joined, /freely available as infrastructure|基础设施无偿开放/);
   assert.doesNotMatch(joined, /paid tier|commercial tier|enterprise|收费|商业套餐|企业套餐/);
+  assert.doesNotMatch(joined, /within documented rate limits|文档规定的频次限制|quota far beyond|远超常规额度/);
 });
 
 test("mixed-case Chinese docs path redirects to generated locale path", async () => {
@@ -199,6 +200,27 @@ test("readmes summarize documentation map and support channels", async () => {
   assert.doesNotMatch(joined, /GitHub Sponsors/);
 });
 
+test("public docs avoid hard quota messaging", async () => {
+  const files = [
+    "../README.md",
+    "../README.zh-CN.md",
+    "../src/content/docs/en/index.md",
+    "../src/content/docs/zh-cn/index.md",
+    "../src/content/docs/en/rate-limits.md",
+    "../src/content/docs/zh-cn/rate-limits.md",
+    "../src/content/docs/en/data-license.md",
+    "../src/content/docs/zh-cn/data-license.md",
+    "../src/content/docs/en/funding.md",
+    "../src/content/docs/zh-cn/funding.md",
+    "../src/content/docs/en/core-concepts/overview.md",
+    "../src/content/docs/zh-cn/core-concepts/overview.md",
+  ];
+  const joined = (await Promise.all(files.map((file) => readFile(new URL(file, import.meta.url), "utf8")))).join("\n");
+  assert.doesNotMatch(joined, /X-RateLimit|Retry-After|default quotas|Default quotas|默认配额/);
+  assert.doesNotMatch(joined, /quota far beyond|within documented rate limits|30 requests \/ 60s|60 requests \/ 60s|300 requests \/ 60s/);
+  assert.doesNotMatch(joined, /Rate Limits|rate limits|rate-limit|Rate Limiting|频次限制|限流|流控|配额|计费|billing/);
+});
+
 test("new documentation structure is linked in sidebar", async () => {
   const config = await readFile(new URL("../astro.config.mjs", import.meta.url), "utf8");
   assert.match(config, /Core Concepts/);
@@ -211,6 +233,7 @@ test("new documentation structure is linked in sidebar", async () => {
   assert.match(config, /common-specifications\/base-fields/);
   assert.match(config, /common-specifications\/response-envelope/);
   assert.match(config, /standard-key-registry/);
+  assert.doesNotMatch(config, /slug: "rate-limits"/);
   for (const { slug } of coreModelSpecs) {
     assert.match(config, new RegExp(`core-models/${slug}`));
   }

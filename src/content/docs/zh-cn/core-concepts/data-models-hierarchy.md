@@ -101,6 +101,7 @@ OpenYoumiya 将**稳定主数据**与**动态行为数据**分开建模。主数
 OpenYoumiya 在资源页面、Schema、示例和同步 Payload 中统一严格执行以下命名规则：
 
 * 公开 JSON 字段使用 `camelCase`。
+* 公开 URL 路径段使用 `kebab-case`，例如 `/api/v1/event-cards`。
 * SQL 字段使用 `snake_case`。
 * 枚举值使用小写 `snake_case`。
 * 时间字段使用带 UTC offset 的 ISO 8601 字符串（例如：`2026-06-01T10:00:00+09:00`）。

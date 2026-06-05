@@ -41,13 +41,13 @@ Derived data notice: if you clean, restructure, merge, or substantially derive f
 - **Third-party rights**: this license does not grant, and does not represent the granting of, any third-party trademark rights, character copyrights, music copyrights, performer image rights, official event branding rights, or exclusive rights held by rights holders or agencies. OpenYoumiya acts only as an integration and synchronization channel for public factual data and does not provide any endorsement for third-party intellectual property.
 - **Unpublished data protection**: private source records, logs, and backend data inside the main OpenYoumiya site, or any data not yet published through public API endpoints, are not considered public data and are not covered by this license.
 
-## API usage and rate-limit rules
+## API usage and service stability rules
 
-OpenYoumiya API is a community project started and maintained by fans at no charge. Because server, bandwidth, and traffic costs are fully covered by the project team, every client should follow these non-abuse principles so shared resources remain fair and highly available:
+OpenYoumiya API is a community project started and maintained by fans. Every client should follow these non-abuse principles so shared resources remain fair and highly available:
 
-- **Rate limiting**: call endpoints only within the documented rate-limit thresholds. Clients should implement local caching for static or low-frequency data to avoid repeated high-concurrency requests.
-- **Credential security**: keep your API token secure. Do not hard-code it into public client source code, frontend JavaScript, or open-source repositories, where it could be stolen and abused, creating extra traffic costs for the project.
-- **Abuse prevention**: malicious concurrency, crawler polling, and attempts to bypass rate limits with multiple accounts are prohibited. Requests that may endanger platform stability or create abnormal cost pressure can trigger automatic gateway defense.
+- **Client caching**: cache static or low-frequency data locally when your use case allows it, instead of repeatedly polling the same resources.
+- **Credential security**: keep your API token secure. Do not hard-code it into public client source code, frontend JavaScript, or open-source repositories, where it could be stolen and abused.
+- **Abuse prevention**: malicious concurrency, crawler polling, credential sharing, and attempts to bypass protective measures with multiple accounts are prohibited. Requests that may endanger platform stability can trigger automatic gateway defense.
 
 For high-frequency access or special requirements:
-if your fan project, event support tool, or research analysis genuinely needs quota far beyond the normal limits, contact the maintenance team in advance. We are happy to discuss technical options such as packaged data distribution, so the ecosystem can grow without exhausting self-funded server bandwidth.
+if your fan project, event support tool, or research analysis needs sustained high-frequency access, contact the maintenance team in advance. We are happy to discuss technical options such as packaged data distribution, so the ecosystem can grow without harming shared availability.

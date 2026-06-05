@@ -1,26 +1,14 @@
 ---
-title: 限流
-description: 请求配额和重试行为。
+title: 服务稳定性
+description: 共享 API 基础设施的合理使用建议。
 ---
 
-OpenYoumiya 公开数据接口需要使用 Bearer token。网关使用双层限流策略：
+OpenYoumiya 公开数据接口需要使用 Bearer token。正常的社区集成不会围绕公开调用上限来设计；平台希望粉丝项目、研究工具和公开数据实验都能低门槛接入。
 
-- **未通过认证的请求**：按客户端 IP 使用 `anonymous` 配额限流，用于防止无 token 或错误 token 请求被滥用。
-- **认证成功的请求**：按 API token 的有效配额限流。若维护者为用户配置了专属配额，则优先使用用户配额；否则使用 token 所属 tier 的默认配额。
+为了让共享服务保持稳定：
 
-默认配额如下：
+- 对稳定或低频更新的数据建立本地缓存。
+- 避免爬虫式轮询、无限重试和会影响其他开发者的突发高并发。
+- 妥善保管 API token，避免凭证泄露后被滥用。
 
-| tier | 配额 |
-| :--- | :--- |
-| `anonymous` | 30 requests / 60s |
-| `default` | 60 requests / 60s |
-| `plus` | 300 requests / 60s |
-
-当 API 返回 `429` 时，请根据响应头判断何时重试：
-
-- `Retry-After`：仅在 `429` 响应中返回，表示建议等待的秒数。
-- `X-RateLimit-Limit`：当前窗口的请求上限。
-- `X-RateLimit-Remaining`：当前窗口剩余可用请求数。
-- `X-RateLimit-Reset`：当前窗口重置时间，格式为 Unix seconds timestamp。
-
-客户端应优先遵守 `Retry-After`，并使用退避策略，避免无限重试。
+如果请求明显危及平台稳定性，或呈现自动化滥用特征，系统可能会触发保护性处理。如果你正在构建活动应援、研究分析或社区工具等高频集成，请提前联系维护团队，我们可以一起讨论更合适的数据交付方式。

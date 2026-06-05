@@ -8,7 +8,7 @@ Connect passion with technology, so fan projects are no longer limited by data.
 
 OpenYoumiya API provides stable, structured access to public data from the [main OpenYoumiya site](https://youmiya.love) for developers building fan sites, event tools, seiyuu and character databases, analytics projects, and support utilities.
 
-You no longer need to start from fragile crawlers, inconsistent data formats, or repeated low-level plumbing. The platform handles public data synchronization, unified field conventions, API token authentication, rate limits, and highly available delivery so developers can focus on creative tools, research, visualization, and fan-made experiences.
+You no longer need to start from fragile crawlers, inconsistent data formats, or repeated low-level plumbing. The platform handles public data synchronization, unified field conventions, API token authentication, usage visibility, service stability protections, and highly available delivery so developers can focus on creative tools, research, visualization, and fan-made experiences.
 
 Our goal is simple: make reliable public data available to everyone who loves this community, and let better tools grow on top of a shared foundation.
 
@@ -33,14 +33,13 @@ Our goal is simple: make reliable public data available to everyone who loves th
 - Data source: public data is synchronized from the main OpenYoumiya site into the open platform data layer.
 - Authentication: public data endpoints require an API token from Console and the `Authorization: Bearer <OPENYOUMIYA_API_TOKEN>` header.
 - Response envelope: successful responses use `data` and optional `meta`; error responses return an `error` object at the root.
-- Rate limits: failed authentication traffic is protected by an IP-based `anonymous` quota, while authenticated traffic is limited by the effective API token quota.
-- Default quotas: `anonymous` is 30 requests / 60s, `default` is 60 requests / 60s, and `plus` is 300 requests / 60s. User-specific quota overrides take precedence.
-- Retry behavior: `Retry-After` is returned only on `429`; `X-RateLimit-Reset` is a Unix seconds reset timestamp.
+- Usage visibility: Console shows API token usage so developers can understand integration activity.
+- Service stability: clients should cache stable data and avoid abusive polling or concurrency that can harm shared availability.
 - Data license: public data is licensed under CC BY 4.0 unless otherwise stated, and published integrations should provide attribution.
 
 ## Documentation Map
 
-- Start: home, getting started, authentication, rate limits, and errors.
+- Start: home, getting started, authentication, API reference, and errors.
 - Core concepts: overview and data model hierarchy.
 - Common specifications: base fields and response envelope.
 - Core models: planning, roles, music and discography, events, venues, and travel.
@@ -68,7 +67,7 @@ Changes to the standard key registry must be submitted through a pull request. E
 
 ## Documentation Roadmap
 
-The current docs define the platform shape, stable model vocabulary, common response envelope, authentication model, rate limits, and community usage rules. The next useful additions are:
+The current docs define the platform shape, stable model vocabulary, common response envelope, authentication model, service stability guidance, and community usage rules. The next useful additions are:
 
 - Endpoint-level API reference for public routes, query parameters, and response examples.
 - Cache, freshness, and versioning rules for clients that mirror or store API data.

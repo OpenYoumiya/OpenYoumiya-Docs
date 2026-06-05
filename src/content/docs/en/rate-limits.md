@@ -1,26 +1,14 @@
 ---
-title: Rate Limits
-description: Request quota and retry behavior.
+title: Service Stability
+description: Fair usage guidance for shared API infrastructure.
 ---
 
-OpenYoumiya public data endpoints require a Bearer token. The gateway applies a two-layer rate limiting strategy:
+OpenYoumiya public data endpoints require a Bearer token. Normal community integrations are not framed around published request caps; the platform is designed to keep access straightforward for fan projects, research tools, and public data experiments.
 
-- **Requests that fail authentication**: rate limited by client IP using the `anonymous` quota. This protects the service from missing-token or invalid-token abuse.
-- **Requests that authenticate successfully**: rate limited by the effective API token quota. User-specific quota overrides take precedence when configured; otherwise the token's tier default is used.
+To keep the shared service healthy:
 
-Default quotas:
+- Cache stable or low-frequency data locally when your use case allows it.
+- Avoid crawler-style polling, retry loops, and bursty concurrency that can disrupt other developers.
+- Keep your API token private so leaked credentials cannot be abused.
 
-| tier | Quota |
-| :--- | :--- |
-| `anonymous` | 30 requests / 60s |
-| `default` | 60 requests / 60s |
-| `plus` | 300 requests / 60s |
-
-When the API returns `429`, use the response headers to decide when to retry:
-
-- `Retry-After`: returned only on `429`, in seconds.
-- `X-RateLimit-Limit`: request limit for the current window.
-- `X-RateLimit-Remaining`: remaining requests in the current window.
-- `X-RateLimit-Reset`: current window reset time as a Unix seconds timestamp.
-
-Clients should honor `Retry-After` first, use backoff, and avoid retry loops.
+Requests that endanger platform stability or look like automated abuse may trigger protective handling. If you are building a high-frequency integration for events, research, or community tooling, contact the maintenance team early so we can discuss a better delivery pattern.
