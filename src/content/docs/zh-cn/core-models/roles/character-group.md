@@ -66,7 +66,7 @@ description: Roles Character 与 Group 关系的最小公开字段。
   "meta": {
     "limit": 100,
     "cursor": "",
-    "nextCursor": null,
+    "nextCursor": "",
     "hasMore": false
   }
 }

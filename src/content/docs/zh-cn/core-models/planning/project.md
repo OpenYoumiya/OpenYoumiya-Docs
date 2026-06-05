@@ -65,7 +65,7 @@ Franchise 关系数据和扩展字段会在公开契约稳定后补充。
   "meta": {
     "limit": 100,
     "cursor": "",
-    "nextCursor": null,
+    "nextCursor": "",
     "hasMore": false
   }
 }

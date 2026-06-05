@@ -17,8 +17,10 @@ description: EventSession 是活动场次资源，EventSessionProfile 是单场�
 | `key` | string | ✓ | Event 内稳定 session key，用于过滤和跨域引用。 |
 | `eventKey` | string | ✓ | 所属 Event key。 |
 | `name` | string | ✓ | 场次展示名。 |
-| `openAt` | string \| null | ✓ | 开场时间，使用带 UTC offset 的 ISO 8601 字符串。 |
-| `startAt` | string \| null | ✓ | 开始时间，使用带 UTC offset 的 ISO 8601 字符串。 |
+| `openAt` | string | ✓ | 开场时间，使用带 UTC offset 的 ISO 8601 字符串；无值时返回空字符串。 |
+| `startAt` | string | ✓ | 开始时间，使用带 UTC offset 的 ISO 8601 字符串；无值时返回空字符串。 |
+| `createdAt` | string | ✓ | 资源创建时间。 |
+| `updatedAt` | string | ✓ | 资源更新时间。 |
 
 ### EventSessionProfile
 
@@ -30,10 +32,10 @@ description: EventSession 是活动场次资源，EventSessionProfile 是单场�
 | `location` | object | 场次地点；不同场次可指向不同 venue。 |
 | `participants.headline` | object[] | 场次级 headline 展示对象；为空时客户端可回退到活动级 headline。 |
 | `participants.casts` | object[] | 场次出演信息。 |
-| `participants.casts[].performer` | object \| null | 出演者摘要。 |
-| `participants.casts[].character` | object \| null | 角色摘要。 |
-| `participants.casts[].roleName` | string \| null | 职能或担当展示名。 |
-| `participants.casts[].group` | object \| null | 出演所属团体摘要。 |
+| `participants.casts[].performer` | object | 出演者摘要；无值时返回空对象字段的零值。 |
+| `participants.casts[].character` | object | 角色摘要；无值时返回空对象字段的零值。 |
+| `participants.casts[].roleName` | string | 职能或担当展示名；无值时返回空字符串。 |
+| `participants.casts[].group` | object | 出演所属团体摘要；无值时返回空对象字段的零值。 |
 
 ## HTTP 路由
 
@@ -55,7 +57,9 @@ description: EventSession 是活动场次资源，EventSessionProfile 是单场�
   "eventKey": "mygo-9th",
   "name": "DAY 1",
   "openAt": "2026-09-12T16:00:00+09:00",
-  "startAt": "2026-09-12T18:00:00+09:00"
+  "startAt": "2026-09-12T18:00:00+09:00",
+  "createdAt": "2026-05-20T10:00:00+09:00",
+  "updatedAt": "2026-05-20T10:00:00+09:00"
 }
 ```
 
@@ -69,7 +73,9 @@ description: EventSession 是活动场次资源，EventSessionProfile 是单场�
     "eventKey": "mygo-9th",
     "name": "DAY 1",
     "openAt": "2026-09-12T16:00:00+09:00",
-    "startAt": "2026-09-12T18:00:00+09:00"
+    "startAt": "2026-09-12T18:00:00+09:00",
+    "createdAt": "2026-05-20T10:00:00+09:00",
+    "updatedAt": "2026-05-20T10:00:00+09:00"
   },
   "location": {
     "venue": {
@@ -90,15 +96,18 @@ description: EventSession 是活动场次资源，EventSessionProfile 是单场�
     "casts": [
       {
         "performer": {
+          "id": "seiyuu:youmiya-hina",
           "key": "youmiya-hina",
           "name": "羊宮妃那"
         },
         "character": {
+          "id": "character:takamatsu-tomori",
           "key": "takamatsu-tomori",
           "name": "高松燈"
         },
         "roleName": "Vo.",
         "group": {
+          "id": "group:mygo",
           "key": "mygo",
           "name": "MyGO!!!!!"
         },

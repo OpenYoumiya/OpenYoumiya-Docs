@@ -26,11 +26,11 @@ Event 是活动主资源。它负责描述活动自身的稳定属性；列表�
 | `key` | string | ✓ | 全局唯一稳定 key，用于过滤和跨域引用。 |
 | `type` | string | ✓ | 活动类型，取值见 `Event.type`。 |
 | `title` | string | ✓ | 活动标题。 |
-| `subtitle` | string \| null | ✓ | 活动副标题；字段名统一使用 `subtitle`。 |
+| `subtitle` | string | ✓ | 活动副标题；无值时返回空字符串。 |
 | `status` | string | ✓ | Core 状态，例如 `draft`、`published`、`archived`、`cancelled`。 |
-| `officialUrl` | string \| null | ✓ | 官方页面 URL。 |
-| `sourceCheckedAt` | string \| null | ✓ | 来源最近校验时间。 |
-| `organizerName` | string \| null | ✓ | 主办方展示名；在 Organization Core 出现前先作为文本字段。 |
+| `officialUrl` | string | ✓ | 官方页面 URL；无值时返回空字符串。 |
+| `sourceCheckedAt` | string | ✓ | 来源最近校验时间；无值时返回空字符串。 |
+| `organizerName` | string | ✓ | 主办方展示名；在 Organization Core 出现前先作为文本字段，无值时返回空字符串。 |
 | `createdAt` | string | ✓ | 资源创建时间。 |
 | `updatedAt` | string | ✓ | 资源更新时间。 |
 
@@ -55,18 +55,18 @@ Event 是活动主资源。它负责描述活动自身的稳定属性；列表�
 | Field | Type | Description |
 | --- | --- | --- |
 | `event` | `Event` | 活动主资源字段。 |
-| `classification.project` | object \| null | 项目信息，由 Event 与 Project 关系聚合得到。 |
+| `classification.projects` | object[] | 项目信息，由 EventSession 的 headline / casts 聚合得到。 |
 | `classification.groups` | object[] | 团体信息，由 Event 与 Group 关系聚合得到。 |
 | `participants.headline` | object[] | 主演展示对象。 |
 | `location.venues` | object[] | 场馆摘要列表，由场次地点去重聚合得到。 |
-| `location.venues[].area` | string \| null | 场馆所在区域。 |
-| `location.venues[].city` | string \| null | 场馆所在城市。 |
-| `schedule.firstStartAt` | string \| null | 首场开始时间，由 EventSession 聚合得到。 |
-| `schedule.lastStartAt` | string \| null | 末场开始时间，由 EventSession 聚合得到。 |
-| `schedule.nextStartAt` | string \| null | 下一场开始时间，由 EventSession 和当前时间派生。 |
+| `location.venues[].area` | string | 场馆所在区域；无值时返回空字符串。 |
+| `location.venues[].city` | string | 场馆所在城市；无值时返回空字符串。 |
+| `schedule.firstStartAt` | string | 首场开始时间，由 EventSession 聚合得到；无值时返回空字符串。 |
+| `schedule.lastStartAt` | string | 末场开始时间，由 EventSession 聚合得到；无值时返回空字符串。 |
+| `schedule.nextStartAt` | string | 下一场开始时间，由 EventSession 和当前时间派生；无值时返回空字符串。 |
 | `timeline.eventPhase` | string | 活动整体阶段，由 session / timeline 与当前时间派生。 |
 | `timeline.sessionPhase` | string | 场次进行阶段，由 session 与当前时间派生。 |
-| `timeline.next` | object \| null | 下一条 timeline item。 |
+| `timeline.next` | object | 下一条 timeline item；无值时返回空对象字段的零值。 |
 
 ### EventCardAroundPage
 
@@ -91,7 +91,7 @@ Event 是活动主资源。它负责描述活动自身的稳定属性；列表�
 | --- | --- | --- |
 | `card` | `EventCard` | 活动摘要。 |
 | `ticketTypes` | object[] | 活动票种摘要。 |
-| `ticketTypes[].faceValue` | number \| null | 票面价格。 |
+| `ticketTypes[].faceValue` | number | 票面价格；无值时返回 `0`。 |
 | `schedule.sessions` | `EventSession[]` | 活动场次摘要列表。 |
 
 ## Payload 示例
@@ -132,12 +132,16 @@ Event 是活动主资源。它负责描述活动自身的稳定属性；列表�
     "updatedAt": "2026-05-20T10:00:00+09:00"
   },
   "classification": {
-    "project": {
-      "key": "bang-dream",
-      "name": "BanG Dream!"
-    },
+    "projects": [
+      {
+        "id": "project:bang-dream",
+        "key": "bang-dream",
+        "name": "BanG Dream!"
+      }
+    ],
     "groups": [
       {
+        "id": "group:mygo",
         "key": "mygo",
         "name": "MyGO!!!!!"
       }
@@ -175,11 +179,14 @@ Event 是活动主资源。它负责描述活动自身的稳定属性；列表�
       "key": "general-sale",
       "eventKey": "mygo-9th",
       "title": "一般発売",
+      "description": "",
       "startsAt": "2026-08-10T12:00:00+09:00",
-      "endsAt": null,
+      "endsAt": "",
       "allDay": false,
       "sourceUrl": "https://bang-dream.com/events/mygo_9th/",
-      "displayOrder": 30
+      "displayOrder": 30,
+      "createdAt": "2026-05-20T10:00:00+09:00",
+      "updatedAt": "2026-05-20T10:00:00+09:00"
     }
   }
 }
@@ -204,12 +211,16 @@ Event 是活动主资源。它负责描述活动自身的稳定属性；列表�
       "updatedAt": "2026-05-20T10:00:00+09:00"
     },
     "classification": {
-      "project": {
-        "key": "bang-dream",
-        "name": "BanG Dream!"
-      },
+      "projects": [
+        {
+          "id": "project:bang-dream",
+          "key": "bang-dream",
+          "name": "BanG Dream!"
+        }
+      ],
       "groups": [
         {
+          "id": "group:mygo",
           "key": "mygo",
           "name": "MyGO!!!!!"
         }
@@ -247,11 +258,14 @@ Event 是活动主资源。它负责描述活动自身的稳定属性；列表�
         "key": "general-sale",
         "eventKey": "mygo-9th",
         "title": "一般発売",
+        "description": "",
         "startsAt": "2026-08-10T12:00:00+09:00",
-        "endsAt": null,
+        "endsAt": "",
         "allDay": false,
         "sourceUrl": "https://bang-dream.com/events/mygo_9th/",
-        "displayOrder": 30
+        "displayOrder": 30,
+        "createdAt": "2026-05-20T10:00:00+09:00",
+        "updatedAt": "2026-05-20T10:00:00+09:00"
       }
     }
   },
@@ -280,7 +294,9 @@ Event 是活动主资源。它负责描述活动自身的稳定属性；列表�
         "eventKey": "mygo-9th",
         "name": "DAY 1",
         "openAt": "2026-09-12T16:00:00+09:00",
-        "startAt": "2026-09-12T18:00:00+09:00"
+        "startAt": "2026-09-12T18:00:00+09:00",
+        "createdAt": "2026-05-20T10:00:00+09:00",
+        "updatedAt": "2026-05-20T10:00:00+09:00"
       },
       {
         "id": "event_session_mygo_9th_day2",
@@ -288,7 +304,9 @@ Event 是活动主资源。它负责描述活动自身的稳定属性；列表�
         "eventKey": "mygo-9th",
         "name": "DAY 2",
         "openAt": "2026-09-13T15:00:00+09:00",
-        "startAt": "2026-09-13T17:00:00+09:00"
+        "startAt": "2026-09-13T17:00:00+09:00",
+        "createdAt": "2026-05-20T10:00:00+09:00",
+        "updatedAt": "2026-05-20T10:00:00+09:00"
       }
     ]
   }
@@ -318,12 +336,16 @@ Event 是活动主资源。它负责描述活动自身的稳定属性；列表�
           "updatedAt": "2026-05-20T10:00:00+09:00"
         },
         "classification": {
-          "project": {
-            "key": "bang-dream",
-            "name": "BanG Dream!"
-          },
+          "projects": [
+            {
+              "id": "project:bang-dream",
+              "key": "bang-dream",
+              "name": "BanG Dream!"
+            }
+          ],
           "groups": [
             {
+              "id": "group:mygo",
               "key": "mygo",
               "name": "MyGO!!!!!"
             }
@@ -356,7 +378,20 @@ Event 是活动主资源。它负责描述活动自身的稳定属性；列表�
         "timeline": {
           "eventPhase": "upcoming",
           "sessionPhase": "pre_live",
-          "next": null
+          "next": {
+            "id": "",
+            "key": "",
+            "eventKey": "",
+            "title": "",
+            "description": "",
+            "startsAt": "",
+            "endsAt": "",
+            "allDay": false,
+            "sourceUrl": "",
+            "displayOrder": 0,
+            "createdAt": "",
+            "updatedAt": ""
+          }
         }
       }
     ]
@@ -365,7 +400,7 @@ Event 是活动主资源。它负责描述活动自身的稳定属性；列表�
     "anchorAt": "2026-06-01T10:00:00+09:00",
     "before": {
       "limit": 30,
-      "nextCursor": null,
+      "nextCursor": "",
       "hasMore": false
     },
     "after": {

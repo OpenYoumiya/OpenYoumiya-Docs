@@ -65,7 +65,7 @@ description: Planning Franchise 最小公开字段。
   "meta": {
     "limit": 100,
     "cursor": "",
-    "nextCursor": null,
+    "nextCursor": "",
     "hasMore": false
   }
 }

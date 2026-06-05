@@ -65,7 +65,7 @@ Group 与 Project 的成员关系由 `ProjectGroup` 表达，不写在 Group 主
   "meta": {
     "limit": 100,
     "cursor": "",
-    "nextCursor": null,
+    "nextCursor": "",
     "hasMore": false
   }
 }

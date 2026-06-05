@@ -65,7 +65,7 @@ Seiyuu 与 Agency、Character 的连接通过关系数据表达，不写进 Seiy
   "meta": {
     "limit": 100,
     "cursor": "",
-    "nextCursor": null,
+    "nextCursor": "",
     "hasMore": false
   }
 }

@@ -49,7 +49,7 @@ OpenYoumiya API 使用较小的统一响应结构（Response Envelope），让�
 | :--- | :--- | :--- |
 | `limit` | number | 请求上限。单页最大返回数量（Page Size）。 |
 | `cursor` | string | 当前请求传入的游标位置。 |
-| `nextCursor` | string \| null | 下一页游标。若无下一页则为 `null`。 |
+| `nextCursor` | string | 下一页游标。若无下一页则返回空字符串。 |
 | `hasMore` | boolean | 是否还有下一页。 |
 
 ### 成功响应示例（分页列表）
@@ -77,6 +77,7 @@ OpenYoumiya API 使用较小的统一响应结构（Response Envelope），让�
 | :--- | :--- | :--- |
 | `error.code` | string | 稳定、机器可读的字面量错误码，供客户端编写分支逻辑。 |
 | `error.message` | string | 面向开发者的简短说明，不建议直接展示给最终用户。 |
+| `error.requestId` | string | 请求追踪 ID；无值时可省略。 |
 | `error.details` | object | 保留的可选结构化细节字段；当前公开 API 通常不返回该字段。 |
 
 ### 错误响应示例

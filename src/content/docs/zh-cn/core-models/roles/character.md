@@ -65,7 +65,7 @@ Character 与 Project、Group 的连接由 `CharacterProject` 与 `CharacterGrou
   "meta": {
     "limit": 100,
     "cursor": "",
-    "nextCursor": null,
+    "nextCursor": "",
     "hasMore": false
   }
 }
