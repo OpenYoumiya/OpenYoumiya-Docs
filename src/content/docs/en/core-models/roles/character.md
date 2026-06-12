@@ -1,6 +1,6 @@
 ---
 title: Character
-description: Roles character model with minimal public fields.
+description: Roles character public fields.
 ---
 
 `Character` is an in-universe character entity.
@@ -13,15 +13,14 @@ Connections to Project and Group are represented by `CharacterProject` and `Char
 
 ### Core attributes
 
-Core attributes describe the Character itself. Only globally stable fields are documented in this first pass.
+Core attributes describe the Character itself. The Core API returns database fields only; it does not return visual or other media objects.
 
 | Field | Type | Supported | Description |
 | --- | --- | --- | --- |
 | `id` | string | ✓ | Stable public ID generated from `key`; treat it as opaque. |
 | `key` | string | ✓ | Globally unique stable key used for filtering and cross-domain references. |
 | `name` | string | ✓ | Canonical name. |
-
-Additional fields can be added later after their public contract is stable.
+| `imageColor` | string | ✓ | Character image color in `#RRGGBB` format. |
 
 ## HTTP routes
 
@@ -47,7 +46,8 @@ List responses include `meta.limit`, `meta.cursor`, `meta.nextCursor`, and `meta
 {
   "id": "character_takamatsu_tomori",
   "key": "takamatsu_tomori",
-  "name": "高松燈"
+  "name": "高松燈",
+  "imageColor": "#77BBDD"
 }
 ```
 
@@ -59,7 +59,8 @@ List responses include `meta.limit`, `meta.cursor`, `meta.nextCursor`, and `meta
     {
       "id": "character_takamatsu_tomori",
       "key": "takamatsu_tomori",
-      "name": "高松燈"
+      "name": "高松燈",
+      "imageColor": "#77BBDD"
     }
   ],
   "meta": {

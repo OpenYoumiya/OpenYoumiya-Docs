@@ -1,6 +1,6 @@
 ---
 title: Group
-description: Planning group model with minimal public fields.
+description: Planning group public fields.
 ---
 
 `Group` is a unit, team, band, or group resource.
@@ -13,15 +13,14 @@ Group membership in Project is represented by `ProjectGroup`, not by a single fi
 
 ### Core attributes
 
-Core attributes describe the Group itself. Only globally stable fields are documented in this first pass.
+Core attributes describe the Group itself. The Core API returns database fields only; it does not return logo or other media objects.
 
 | Field | Type | Supported | Description |
 | --- | --- | --- | --- |
 | `id` | string | ✓ | Stable public ID generated from `key`; treat it as opaque. |
 | `key` | string | ✓ | Globally unique stable key used for filtering and cross-domain references. |
 | `name` | string | ✓ | Canonical name. |
-
-Additional fields can be added later after their public contract is stable.
+| `imageColor` | string | ✓ | Group image color in `#RRGGBB` format. |
 
 ## HTTP routes
 
@@ -47,7 +46,8 @@ List responses include `meta.limit`, `meta.cursor`, `meta.nextCursor`, and `meta
 {
   "id": "group_mygo",
   "key": "mygo",
-  "name": "MyGO!!!!!"
+  "name": "MyGO!!!!!",
+  "imageColor": "#3388BB"
 }
 ```
 
@@ -59,7 +59,8 @@ List responses include `meta.limit`, `meta.cursor`, `meta.nextCursor`, and `meta
     {
       "id": "group_mygo",
       "key": "mygo",
-      "name": "MyGO!!!!!"
+      "name": "MyGO!!!!!",
+      "imageColor": "#3388BB"
     }
   ],
   "meta": {

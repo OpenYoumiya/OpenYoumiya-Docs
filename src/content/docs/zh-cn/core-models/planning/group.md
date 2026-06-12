@@ -1,6 +1,6 @@
 ---
 title: Group（组合）
-description: Planning Group 最小公开字段。
+description: Planning Group 公开字段。
 ---
 
 `Group` 是组合、团体、小队或乐队资源。
@@ -13,15 +13,14 @@ Group 与 Project 的成员关系由 `ProjectGroup` 表达，不写在 Group 主
 
 ### 主属性
 
-主属性描述 Group 自身。本轮只记录全局稳定的最小字段。
+主属性描述 Group 自身。Core API 只返回数据库字段，不返回 logo 或其他媒体对象。
 
 | Field | Type | supported | Description |
 | --- | --- | --- | --- |
 | `id` | string | ✓ | 由 `key` 生成的稳定公开 ID；客户端应视为 opaque。 |
 | `key` | string | ✓ | 全局唯一稳定 key，用于过滤和跨域引用。 |
 | `name` | string | ✓ | 规范名称。 |
-
-其他字段会在公开契约稳定后再补充。
+| `imageColor` | string | ✓ | 组合印象色，使用 `#RRGGBB`。 |
 
 ## HTTP 路由
 
@@ -47,7 +46,8 @@ Group 与 Project 的成员关系由 `ProjectGroup` 表达，不写在 Group 主
 {
   "id": "group_mygo",
   "key": "mygo",
-  "name": "MyGO!!!!!"
+  "name": "MyGO!!!!!",
+  "imageColor": "#3388BB"
 }
 ```
 
@@ -59,7 +59,8 @@ Group 与 Project 的成员关系由 `ProjectGroup` 表达，不写在 Group 主
     {
       "id": "group_mygo",
       "key": "mygo",
-      "name": "MyGO!!!!!"
+      "name": "MyGO!!!!!",
+      "imageColor": "#3388BB"
     }
   ],
   "meta": {

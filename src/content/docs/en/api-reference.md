@@ -25,12 +25,32 @@ Gateway receives the full internal Origin contract from `Origin /origin/openapi.
 | `GET` | `/api/v1/projects` | List projects. |
 | `GET` | `/api/v1/projects/{key}` | Get one project. |
 | `GET` | `/api/v1/franchises` | List franchises. |
+| `GET` | `/api/v1/franchises/{key}` | Get one franchise. |
 | `GET` | `/api/v1/groups` | List groups. |
+| `GET` | `/api/v1/groups/{key}` | Get one group. |
 | `GET` | `/api/v1/project-groups` | List project/group relations. |
+| `GET` | `/api/v1/project-groups/{key}` | Get one project/group relation. |
 | `GET` | `/api/v1/characters` | List characters. |
+| `GET` | `/api/v1/characters/{key}` | Get one character. |
+| `GET` | `/api/v1/character-projects` | List character/project relations. |
+| `GET` | `/api/v1/character-projects/{key}` | Get one character/project relation. |
+| `GET` | `/api/v1/character-groups` | List character/group relations. |
+| `GET` | `/api/v1/character-groups/{key}` | Get one character/group relation. |
 | `GET` | `/api/v1/seiyuus` | List seiyuus. |
+| `GET` | `/api/v1/seiyuus/{key}` | Get one seiyuu. |
+| `GET` | `/api/v1/agencies` | List agencies. |
+| `GET` | `/api/v1/agencies/{key}` | Get one agency. |
 | `GET` | `/api/v1/casts` | List cast relations. |
+| `GET` | `/api/v1/casts/{key}` | Get one cast relation. |
 | `GET` | `/api/v1/venues` | List venues. |
+| `GET` | `/api/v1/venues/{key}` | Get one venue. |
+| `GET` | `/api/v1/events` | List events. |
+| `GET` | `/api/v1/events/{key}` | Get one event. |
+| `GET` | `/api/v1/events/{eventKey}/sessions` | List event session summaries. |
+| `GET` | `/api/v1/events/{eventKey}/timeline-items` | List event timeline items. |
+| `GET` | `/api/v1/event-cards` | List event card read models. |
+| `GET` | `/api/v1/event-profiles/{eventKey}` | Get event profile read model. |
+| `GET` | `/api/v1/events/{eventKey}/sessions/{sessionKey}/profile` | Get session profile read model. |
 
 All routes except health checks require:
 

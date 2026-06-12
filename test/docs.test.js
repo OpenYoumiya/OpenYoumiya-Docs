@@ -7,9 +7,9 @@ const standardKeyRegistryPages = ["index", "planning/bang-dream"];
 const coreModelSpecs = [
   { slug: "planning/franchise", fields: ["id", "key", "name"] },
   { slug: "planning/project", fields: ["id", "key", "name"] },
-  { slug: "planning/group", fields: ["id", "key", "name"] },
+  { slug: "planning/group", fields: ["id", "key", "name", "imageColor"] },
   { slug: "planning/project-group", fields: ["id", "key", "projectKey", "groupKey"] },
-  { slug: "roles/character", fields: ["id", "key", "name"] },
+  { slug: "roles/character", fields: ["id", "key", "name", "imageColor"] },
   { slug: "roles/character-project", fields: ["id", "key", "characterKey", "projectKey"] },
   { slug: "roles/character-group", fields: ["id", "key", "characterKey", "groupKey"] },
   { slug: "roles/agency", fields: ["id", "key", "name"] },
@@ -18,8 +18,11 @@ const coreModelSpecs = [
   { slug: "music-discography/release", fields: ["id", "key", "name"] },
   { slug: "music-discography/song", fields: ["id", "key", "name"] },
   { slug: "music-discography/track", fields: ["id", "key", "releaseKey", "songKey"] },
-  { slug: "events/event", fields: ["id", "key", "name"] },
-  { slug: "events/event-session", fields: ["id", "key", "eventKey"] },
+  {
+    slug: "events/event",
+    fields: ["id", "key", "type", "title", "subtitle", "status", "officialUrl", "sourceCheckedAt", "organizerName", "createdAt", "updatedAt"],
+  },
+  { slug: "events/event-session", fields: ["id", "key", "eventKey", "name", "openAt", "startAt", "createdAt", "updatedAt"] },
   { slug: "events/event-timeline", fields: ["id", "key", "eventKey"] },
   { slug: "events/session-setlist", fields: ["id", "key", "sessionKey", "songKey"] },
   { slug: "venues-facilities/venue", fields: ["id", "key", "name"] },
@@ -304,18 +307,12 @@ test("core model docs use minimal supported fields", async () => {
   const oldFieldNames = [
     "displayName",
     "aliases",
-    "status",
     "sortOrder",
-    "createdAt",
-    "updatedAt",
     "slug",
     "eventType",
     "itemKey",
-    "startsAt",
-    "endsAt",
     "utcOffset",
     "profileImageUrl",
-    "officialUrl",
   ];
 
   for (const spec of coreModelSpecs) {
@@ -368,17 +365,29 @@ test("public field docs do not describe legacy compatibility fields", async () =
 });
 
 function fieldRows(markdown) {
-  return markdown
-    .split("\n")
-    .filter((line) => line.startsWith("| `"))
-    .map((line) => {
-      const [name, type, supported, description] = line
-        .split("|")
-        .slice(1, -1)
-        .map((cell) => cell.trim().replace(/^`|`$/g, ""));
-      return { name, type, supported, description };
-    })
-    .filter((row) => row.type === "string");
+  const lines = markdown.split("\n");
+  const rows = [];
+  let inSupportedTable = false;
+
+  for (const line of lines) {
+    if (line.startsWith("| Field | Type |") && /supported/i.test(line)) {
+      inSupportedTable = true;
+      continue;
+    }
+    if (inSupportedTable && !line.startsWith("|")) {
+      inSupportedTable = false;
+      continue;
+    }
+    if (!inSupportedTable || !line.startsWith("| `")) continue;
+
+    const [name, type, supported, description] = line
+      .split("|")
+      .slice(1, -1)
+      .map((cell) => cell.trim().replace(/^`|`$/g, ""));
+    rows.push({ name, type, supported, description });
+  }
+
+  return rows.filter((row) => row.type === "string");
 }
 
 function modelNameFromSlug(slug) {

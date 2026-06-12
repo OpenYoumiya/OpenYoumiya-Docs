@@ -7,7 +7,7 @@ description: EventSession 是活动场次资源，EventSessionProfile 是单场�
 
 ## 模型定义
 
-### EventSession
+### EventSession `data` payload
 
 关系属性描述 Event 到 Session 的连接，以及场次自身的公开时间信息。
 
@@ -24,18 +24,21 @@ description: EventSession 是活动场次资源，EventSessionProfile 是单场�
 
 ### EventSessionProfile
 
-`EventSessionProfile` 是单个场次的详情读取模型。它以 `EventSession` 为入口，展开与该场次绑定的地点和出演。
+`EventSessionProfile` 是单个场次的详情读取模型。它以 `EventSession` 为入口，展开与该场次绑定的地点和参演者。
 
 | Field | Type | Description |
 | --- | --- | --- |
 | `session` | `EventSession` | 场次主资源字段。 |
 | `location` | object | 场次地点；不同场次可指向不同 venue。 |
-| `participants.headline` | object[] | 场次级 headline 展示对象；为空时客户端可回退到活动级 headline。 |
-| `participants.casts` | object[] | 场次出演信息。 |
-| `participants.casts[].performer` | object | 出演者摘要；无值时返回空对象字段的零值。 |
-| `participants.casts[].character` | object | 角色摘要；无值时返回空对象字段的零值。 |
+| `participants.headline` | object[] | 场次级 headline 展示对象；为空时客户端可回退到活动级 headline；不参与活动分类归属。 |
+| `participants.casts` | object[] | 场次参演者列表；字段名保留为 `casts`，来源是 session 级参演记录。 |
+| `participants.casts[].performer` | object | 参演声优摘要；必有。 |
+| `participants.casts[].character` | object | 角色摘要；未配置时返回空对象字段的零值。 |
 | `participants.casts[].roleName` | string | 职能或担当展示名；无值时返回空字符串。 |
-| `participants.casts[].group` | object | 出演所属团体摘要；无值时返回空对象字段的零值。 |
+| `participants.casts[].group` | object | 参演所属团体摘要；未配置时返回空对象字段的零值。 |
+| `participants.casts[].project` | object | 参演所属项目摘要；未配置时返回空对象字段的零值。 |
+
+Session 级参演记录表达“声优必选，角色/团体/项目可选”。活动卡片的 `classification.projects` / `classification.groups` 只从这里显式聚合，不从角色长期归属或组合长期归属反推。
 
 ## HTTP 路由
 
@@ -79,8 +82,8 @@ description: EventSession 是活动场次资源，EventSessionProfile 是单场�
   },
   "location": {
     "venue": {
-      "key": "ariake-arena",
-      "name": "有明アリーナ",
+      "key": "tokyo_garden_theater",
+      "name": "Tokyo Garden Theater",
       "area": "有明",
       "city": "Tokyo"
     }
@@ -90,26 +93,34 @@ description: EventSession 是活动场次资源，EventSessionProfile 是单场�
       {
         "key": "mygo",
         "name": "MyGO!!!!!",
-        "kind": "group"
+        "kind": "group",
+        "imageColor": "#3388BB"
       }
     ],
     "casts": [
       {
         "performer": {
-          "id": "seiyuu:youmiya-hina",
-          "key": "youmiya-hina",
+          "id": "seiyuu:youmiya_hina",
+          "key": "youmiya_hina",
           "name": "羊宮妃那"
         },
         "character": {
-          "id": "character:takamatsu-tomori",
-          "key": "takamatsu-tomori",
-          "name": "高松燈"
+          "id": "character:takamatsu_tomori",
+          "key": "takamatsu_tomori",
+          "name": "高松燈",
+          "imageColor": "#77BBDD"
         },
         "roleName": "Vo.",
         "group": {
           "id": "group:mygo",
           "key": "mygo",
-          "name": "MyGO!!!!!"
+          "name": "MyGO!!!!!",
+          "imageColor": "#3388BB"
+        },
+        "project": {
+          "id": "project:bandori",
+          "key": "bandori",
+          "name": "BanG Dream! Girls Band Party!"
         },
         "displayOrder": 10
       }
