@@ -32,13 +32,13 @@ description: EventSession 是活动场次资源，EventSessionProfile 是单场�
 | `location` | object | 场次地点；不同场次可指向不同 venue。 |
 | `participants.headline` | object[] | 场次级 headline 展示对象；为空时客户端可回退到活动级 headline；不参与活动分类归属。 |
 | `participants.casts` | object[] | 场次参演者列表；字段名保留为 `casts`，来源是 session 级参演记录。 |
-| `participants.casts[].performer` | object | 参演声优摘要；必有。 |
-| `participants.casts[].character` | object | 角色摘要；未配置时返回空对象字段的零值。 |
+| `participants.casts[].character` | object | 角色摘要；必有。 |
+| `participants.casts[].seiyuu` | object | 参演声优摘要；未配置时返回空对象字段的零值（例如三次元艺人本身无声优）。 |
 | `participants.casts[].roleName` | string | 职能或担当展示名；无值时返回空字符串。 |
 | `participants.casts[].group` | object | 参演所属团体摘要；未配置时返回空对象字段的零值。 |
 | `participants.casts[].project` | object | 参演所属项目摘要；未配置时返回空对象字段的零值。 |
 
-Session 级参演记录表达“声优必选，角色/团体/项目可选”。活动卡片的 `classification.projects` / `classification.groups` 只从这里显式聚合，不从角色长期归属或组合长期归属反推。
+Session 级参演记录表达“角色必选，声优/团体/项目可选”。活动卡片的 `classification.projects` / `classification.groups` 只从这里显式聚合，不从角色长期归属或组合长期归属反推。
 
 ## HTTP 路由
 
@@ -99,16 +99,16 @@ Session 级参演记录表达“声优必选，角色/团体/项目可选”。�
     ],
     "casts": [
       {
-        "performer": {
-          "id": "seiyuu:youmiya_hina",
-          "key": "youmiya_hina",
-          "name": "羊宮妃那"
-        },
         "character": {
           "id": "character:takamatsu_tomori",
           "key": "takamatsu_tomori",
           "name": "高松燈",
           "imageColor": "#77BBDD"
+        },
+        "seiyuu": {
+          "id": "seiyuu:youmiya_hina",
+          "key": "youmiya_hina",
+          "name": "羊宮妃那"
         },
         "roleName": "Vo.",
         "group": {

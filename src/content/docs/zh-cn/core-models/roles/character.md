@@ -21,6 +21,7 @@ Character 与 Project、Group 的连接由 `CharacterProject` 与 `CharacterGrou
 | `key` | string | ✓ | 全局唯一稳定 key，用于过滤和跨域引用。 |
 | `name` | string | ✓ | 规范名称。 |
 | `imageColor` | string | ✓ | 角色印象色，使用 `#RRGGBB`。 |
+| `kind` | string | ✓ | 角色分类：`virtual` (二次元角色，可绑定声优) / `real` (三次元艺人本身)。 |
 
 ## HTTP 路由
 
@@ -47,7 +48,8 @@ Character 与 Project、Group 的连接由 `CharacterProject` 与 `CharacterGrou
   "id": "character_takamatsu_tomori",
   "key": "takamatsu_tomori",
   "name": "高松燈",
-  "imageColor": "#77BBDD"
+  "imageColor": "#77BBDD",
+  "kind": "virtual"
 }
 ```
 
@@ -60,7 +62,8 @@ Character 与 Project、Group 的连接由 `CharacterProject` 与 `CharacterGrou
       "id": "character_takamatsu_tomori",
       "key": "takamatsu_tomori",
       "name": "高松燈",
-      "imageColor": "#77BBDD"
+      "imageColor": "#77BBDD",
+      "kind": "virtual"
     }
   ],
   "meta": {

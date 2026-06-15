@@ -30,13 +30,13 @@ Relationship attributes describe the Event-to-Session connection and the public 
 | `location` | object | Session venue. Different sessions can point to different venues. |
 | `participants.headline` | object[] | Session headline display objects. Empty arrays can fall back to event-level headline on the client. They do not define classification. |
 | `participants.casts` | object[] | Session participant list. The field name remains `casts`, but the source is session participant records. |
-| `participants.casts[].performer` | object | Seiyuu summary. Required. |
-| `participants.casts[].character` | object | Character summary. Returns a zero-value object when not configured. |
+| `participants.casts[].character` | object | Character summary. Required. |
+| `participants.casts[].seiyuu` | object | Seiyuu summary. Returns a zero-value object when not configured (e.g. for real 3D performers). |
 | `participants.casts[].roleName` | string | Role or part display name; returns an empty string when unavailable. |
 | `participants.casts[].group` | object | Group summary. Returns a zero-value object when not configured. |
 | `participants.casts[].project` | object | Project summary. Returns a zero-value object when not configured. |
 
-Session participant records mean "seiyuu required; character, group, and project optional." EventCard `classification.projects` and `classification.groups` are explicitly aggregated from those records, not inferred from long-term character or group membership.
+Session participant records mean "character required; seiyuu, group, and project optional." EventCard `classification.projects` and `classification.groups` are explicitly aggregated from those records, not inferred from long-term character or group membership.
 
 ## HTTP routes
 
@@ -97,16 +97,16 @@ The public OpenAPI specification is the source of truth for route contracts.
     ],
     "casts": [
       {
-        "performer": {
-          "id": "seiyuu:youmiya_hina",
-          "key": "youmiya_hina",
-          "name": "羊宮妃那"
-        },
         "character": {
           "id": "character:takamatsu_tomori",
           "key": "takamatsu_tomori",
           "name": "高松燈",
           "imageColor": "#77BBDD"
+        },
+        "seiyuu": {
+          "id": "seiyuu:youmiya_hina",
+          "key": "youmiya_hina",
+          "name": "羊宮妃那"
         },
         "roleName": "Vo.",
         "group": {
