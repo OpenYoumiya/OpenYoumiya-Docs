@@ -19,6 +19,7 @@ Relationship attributes describe the ProjectGroup link itself. Only stable endpo
 | `key` | string | ✓ | Globally unique stable key used for filtering and cross-domain references. |
 | `projectKey` | string | ✓ | Linked Project key. |
 | `groupKey` | string | ✓ | Linked Group key. |
+| `displayOrder` | number | ✓ | Display order within the same Project. Lower values appear first. Returns `0` when not configured. |
 
 Additional fields can be added later after their public contract is stable.
 
@@ -47,7 +48,8 @@ List responses include `meta.limit`, `meta.cursor`, `meta.nextCursor`, and `meta
   "id": "project_group_bandori_mygo",
   "key": "bandori_mygo",
   "projectKey": "bandori",
-  "groupKey": "mygo"
+  "groupKey": "mygo",
+  "displayOrder": 0
 }
 ```
 
@@ -60,13 +62,14 @@ List responses include `meta.limit`, `meta.cursor`, `meta.nextCursor`, and `meta
       "id": "project_group_bandori_mygo",
       "key": "bandori_mygo",
       "projectKey": "bandori",
-      "groupKey": "mygo"
+      "groupKey": "mygo",
+      "displayOrder": 0
     }
   ],
   "meta": {
     "limit": 100,
     "cursor": "",
-    "nextCursor": null,
+    "nextCursor": "",
     "hasMore": false
   }
 }

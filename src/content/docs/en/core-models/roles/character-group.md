@@ -19,6 +19,8 @@ Relationship attributes describe the CharacterGroup link itself. Only stable end
 | `key` | string | ✓ | Globally unique stable key used for filtering and cross-domain references. |
 | `characterKey` | string | ✓ | Linked Character key. |
 | `groupKey` | string | ✓ | Linked Group key. |
+| `displayName` | string | ✓ | Character display name within this Group. Empty string means use the Character name. |
+| `displayOrder` | number | ✓ | Character display order within the same Group. Lower values appear first. Returns `0` when not configured. |
 
 Additional fields can be added later after their public contract is stable.
 
@@ -47,7 +49,9 @@ List responses include `meta.limit`, `meta.cursor`, `meta.nextCursor`, and `meta
   "id": "character_group_takamatsu_tomori_mygo",
   "key": "takamatsu_tomori_mygo",
   "characterKey": "takamatsu_tomori",
-  "groupKey": "mygo"
+  "groupKey": "mygo",
+  "displayName": "",
+  "displayOrder": 0
 }
 ```
 
@@ -60,13 +64,15 @@ List responses include `meta.limit`, `meta.cursor`, `meta.nextCursor`, and `meta
       "id": "character_group_takamatsu_tomori_mygo",
       "key": "takamatsu_tomori_mygo",
       "characterKey": "takamatsu_tomori",
-      "groupKey": "mygo"
+      "groupKey": "mygo",
+      "displayName": "",
+      "displayOrder": 0
     }
   ],
   "meta": {
     "limit": 100,
     "cursor": "",
-    "nextCursor": null,
+    "nextCursor": "",
     "hasMore": false
   }
 }

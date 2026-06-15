@@ -19,6 +19,7 @@ description: Planning Project 与 Group 关系的最小公开字段。
 | `key` | string | ✓ | 全局唯一稳定 key，用于过滤和跨域引用。 |
 | `projectKey` | string | ✓ | 被关联的 Project key。 |
 | `groupKey` | string | ✓ | 被关联的 Group key。 |
+| `displayOrder` | number | ✓ | 在同一 Project 下的展示顺序；数值越小越靠前。未配置时返回 `0`。 |
 
 其他字段会在公开契约稳定后再补充。
 
@@ -47,7 +48,8 @@ description: Planning Project 与 Group 关系的最小公开字段。
   "id": "project_group_bandori_mygo",
   "key": "bandori_mygo",
   "projectKey": "bandori",
-  "groupKey": "mygo"
+  "groupKey": "mygo",
+  "displayOrder": 0
 }
 ```
 
@@ -60,7 +62,8 @@ description: Planning Project 与 Group 关系的最小公开字段。
       "id": "project_group_bandori_mygo",
       "key": "bandori_mygo",
       "projectKey": "bandori",
-      "groupKey": "mygo"
+      "groupKey": "mygo",
+      "displayOrder": 0
     }
   ],
   "meta": {

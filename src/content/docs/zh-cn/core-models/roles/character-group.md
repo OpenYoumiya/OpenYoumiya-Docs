@@ -19,6 +19,8 @@ description: Roles Character 与 Group 关系的最小公开字段。
 | `key` | string | ✓ | 全局唯一稳定 key，用于过滤和跨域引用。 |
 | `characterKey` | string | ✓ | 被关联的 Character key。 |
 | `groupKey` | string | ✓ | 被关联的 Group key。 |
+| `displayName` | string | ✓ | Character 在该 Group 下的展示名；空字符串表示使用 Character 本名。 |
+| `displayOrder` | number | ✓ | 在同一 Group 下的角色展示顺序；数值越小越靠前。未配置时返回 `0`。 |
 
 其他字段会在公开契约稳定后再补充。
 
@@ -47,7 +49,9 @@ description: Roles Character 与 Group 关系的最小公开字段。
   "id": "character_group_takamatsu_tomori_mygo",
   "key": "takamatsu_tomori_mygo",
   "characterKey": "takamatsu_tomori",
-  "groupKey": "mygo"
+  "groupKey": "mygo",
+  "displayName": "",
+  "displayOrder": 0
 }
 ```
 
@@ -60,7 +64,9 @@ description: Roles Character 与 Group 关系的最小公开字段。
       "id": "character_group_takamatsu_tomori_mygo",
       "key": "takamatsu_tomori_mygo",
       "characterKey": "takamatsu_tomori",
-      "groupKey": "mygo"
+      "groupKey": "mygo",
+      "displayName": "",
+      "displayOrder": 0
     }
   ],
   "meta": {

@@ -41,9 +41,9 @@ This page summarizes the public Event-related models:
 | Field | Type | Description |
 | --- | --- | --- |
 | `event` | `Event` | Main event resource fields. |
-| `classification.projects` | object[] | Project resources explicitly aggregated from session participant `projectKey`. |
-| `classification.groups` | object[] | Group resources explicitly aggregated from session participant `groupKey`; includes `imageColor`. |
-| `participants.headline` | object[] | Headline display objects; they are display-only and do not define classification. |
+| `classification.projects` | object[] | Project resources explicitly aggregated from session participant `projectKey`; includes `imageUrl`. |
+| `classification.groups` | object[] | Group resources explicitly aggregated from session participant `groupKey`; includes `imageColor` and `imageUrl`. |
+| `participants.headline` | object[] | Headline display objects; they are display-only and do not define classification; includes `imageUrl`. |
 | `location.venues` | object[] | Deduplicated venue summaries from sessions. |
 | `schedule.firstStartAt` | string | First session start time; returns an empty string when unavailable. |
 | `schedule.lastStartAt` | string | Last session start time; returns an empty string when unavailable. |
@@ -103,7 +103,8 @@ EventCard classification uses only explicit session participant `projectKey` / `
       {
         "id": "project:bandori",
         "key": "bandori",
-        "name": "BanG Dream! Girls Band Party!"
+        "name": "BanG Dream! Girls Band Party!",
+        "imageUrl": "/assets/core/projects/bandori/logo.webp"
       }
     ],
     "groups": [
@@ -111,7 +112,8 @@ EventCard classification uses only explicit session participant `projectKey` / `
         "id": "group:mygo",
         "key": "mygo",
         "name": "MyGO!!!!!",
-        "imageColor": "#3388BB"
+        "imageColor": "#3388BB",
+        "imageUrl": "/assets/core/groups/mygo/logo.webp"
       }
     ]
   },
@@ -121,7 +123,8 @@ EventCard classification uses only explicit session participant `projectKey` / `
         "key": "mygo",
         "name": "MyGO!!!!!",
         "kind": "group",
-        "imageColor": "#3388BB"
+        "imageColor": "#3388BB",
+        "imageUrl": "/assets/core/groups/mygo/logo.webp"
       }
     ]
   }

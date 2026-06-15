@@ -55,9 +55,9 @@ Event 是活动主资源。它负责描述活动自身的稳定属性；列表�
 | Field | Type | Description |
 | --- | --- | --- |
 | `event` | `Event` | 活动主资源字段。 |
-| `classification.projects` | object[] | 项目信息，由 session 级参演记录的 `projectKey` 显式聚合得到。 |
-| `classification.groups` | object[] | 团体信息，由 session 级参演记录的 `groupKey` 显式聚合得到；包含 `imageColor`。 |
-| `participants.headline` | object[] | 主演展示对象；来自 headline 关系，只负责展示，不参与分类归属。 |
+| `classification.projects` | object[] | 项目信息，由 session 级参演记录的 `projectKey` 显式聚合得到；包含 `imageUrl`。 |
+| `classification.groups` | object[] | 团体信息，由 session 级参演记录的 `groupKey` 显式聚合得到；包含 `imageColor` 和 `imageUrl`。 |
+| `participants.headline` | object[] | 主演展示对象；来自 headline 关系，只负责展示，不参与分类归属；包含 `imageUrl`。 |
 | `location.venues` | object[] | 场馆摘要列表，由场次地点去重聚合得到。 |
 | `location.venues[].area` | string | 场馆所在区域；无值时返回空字符串。 |
 | `location.venues[].city` | string | 场馆所在城市；无值时返回空字符串。 |
@@ -138,7 +138,8 @@ EventCard 的分类归属只使用 session 级参演记录里的显式 `projectK
       {
         "id": "project:bandori",
         "key": "bandori",
-        "name": "BanG Dream! Girls Band Party!"
+        "name": "BanG Dream! Girls Band Party!",
+        "imageUrl": "/assets/core/projects/bandori/logo.webp"
       }
     ],
     "groups": [
@@ -146,7 +147,8 @@ EventCard 的分类归属只使用 session 级参演记录里的显式 `projectK
         "id": "group:mygo",
         "key": "mygo",
         "name": "MyGO!!!!!",
-        "imageColor": "#3388BB"
+        "imageColor": "#3388BB",
+        "imageUrl": "/assets/core/groups/mygo/logo.webp"
       }
     ]
   },
@@ -156,7 +158,8 @@ EventCard 的分类归属只使用 session 级参演记录里的显式 `projectK
         "key": "mygo",
         "name": "MyGO!!!!!",
         "kind": "group",
-        "imageColor": "#3388BB"
+        "imageColor": "#3388BB",
+        "imageUrl": "/assets/core/groups/mygo/logo.webp"
       }
     ]
   },
@@ -219,7 +222,8 @@ EventCard 的分类归属只使用 session 级参演记录里的显式 `projectK
         {
           "id": "project:bandori",
           "key": "bandori",
-          "name": "BanG Dream! Girls Band Party!"
+          "name": "BanG Dream! Girls Band Party!",
+          "imageUrl": "/assets/core/projects/bandori/logo.webp"
         }
       ],
       "groups": [
@@ -227,7 +231,8 @@ EventCard 的分类归属只使用 session 级参演记录里的显式 `projectK
           "id": "group:mygo",
           "key": "mygo",
           "name": "MyGO!!!!!",
-          "imageColor": "#3388BB"
+          "imageColor": "#3388BB",
+          "imageUrl": "/assets/core/groups/mygo/logo.webp"
         }
       ]
     },
@@ -237,7 +242,8 @@ EventCard 的分类归属只使用 session 级参演记录里的显式 `projectK
           "key": "mygo",
           "name": "MyGO!!!!!",
           "kind": "group",
-          "imageColor": "#3388BB"
+          "imageColor": "#3388BB",
+          "imageUrl": "/assets/core/groups/mygo/logo.webp"
         }
       ]
     },
@@ -346,7 +352,8 @@ EventCard 的分类归属只使用 session 级参演记录里的显式 `projectK
             {
               "id": "project:bandori",
               "key": "bandori",
-              "name": "BanG Dream! Girls Band Party!"
+              "name": "BanG Dream! Girls Band Party!",
+              "imageUrl": "/assets/core/projects/bandori/logo.webp"
             }
           ],
           "groups": [
@@ -354,7 +361,8 @@ EventCard 的分类归属只使用 session 级参演记录里的显式 `projectK
               "id": "group:mygo",
               "key": "mygo",
               "name": "MyGO!!!!!",
-              "imageColor": "#3388BB"
+              "imageColor": "#3388BB",
+              "imageUrl": "/assets/core/groups/mygo/logo.webp"
             }
           ]
         },
@@ -364,7 +372,8 @@ EventCard 的分类归属只使用 session 级参演记录里的显式 `projectK
               "key": "mygo",
               "name": "MyGO!!!!!",
               "kind": "group",
-              "imageColor": "#3388BB"
+              "imageColor": "#3388BB",
+              "imageUrl": "/assets/core/groups/mygo/logo.webp"
             }
           ]
         },
