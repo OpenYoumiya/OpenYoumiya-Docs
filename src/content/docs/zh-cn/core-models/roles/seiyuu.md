@@ -20,6 +20,8 @@ Seiyuu 与 Agency、Character 的连接通过关系数据表达，不写进 Seiy
 | `id` | string | ✓ | 由 `key` 生成的稳定公开 ID；客户端应视为 opaque。 |
 | `key` | string | ✓ | 全局唯一稳定 key，用于过滤和跨域引用。 |
 | `name` | string | ✓ | 规范名称。 |
+| `agencyKey` | string | ✓ | 关联 Agency key；无事务所引用时返回空字符串。 |
+| `careerStatus` | string | ✓ | 职业活动状态：`active`、`retired`、`hiatus` 或 `unknown`。 |
 
 其他字段会在公开契约稳定后再补充。
 
@@ -45,9 +47,11 @@ Seiyuu 与 Agency、Character 的连接通过关系数据表达，不写进 Seiy
 
 ```json
 {
-  "id": "seiyuu_youmiya_hina",
+  "id": "seiyuu:youmiya_hina",
   "key": "youmiya_hina",
-  "name": "羊宮妃那"
+  "name": "羊宮妃那",
+  "agencyKey": "aoni_pro",
+  "careerStatus": "active"
 }
 ```
 
@@ -57,9 +61,11 @@ Seiyuu 与 Agency、Character 的连接通过关系数据表达，不写进 Seiy
 {
   "data": [
     {
-      "id": "seiyuu_youmiya_hina",
+      "id": "seiyuu:youmiya_hina",
       "key": "youmiya_hina",
-      "name": "羊宮妃那"
+      "name": "羊宮妃那",
+      "agencyKey": "aoni_pro",
+      "careerStatus": "active"
     }
   ],
   "meta": {

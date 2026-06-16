@@ -20,6 +20,8 @@ Core attributes describe the Seiyuu itself. Only globally stable fields are docu
 | `id` | string | ✓ | Stable public ID generated from `key`; treat it as opaque. |
 | `key` | string | ✓ | Globally unique stable key used for filtering and cross-domain references. |
 | `name` | string | ✓ | Canonical name. |
+| `agencyKey` | string | ✓ | Linked agency key. Empty string means no agency reference is available. |
+| `careerStatus` | string | ✓ | Career activity status: `active`, `retired`, `hiatus`, or `unknown`. |
 
 Additional fields can be added later after their public contract is stable.
 
@@ -45,9 +47,11 @@ List responses include `meta.limit`, `meta.cursor`, `meta.nextCursor`, and `meta
 
 ```json
 {
-  "id": "seiyuu_youmiya_hina",
+  "id": "seiyuu:youmiya_hina",
   "key": "youmiya_hina",
-  "name": "羊宮妃那"
+  "name": "羊宮妃那",
+  "agencyKey": "aoni_pro",
+  "careerStatus": "active"
 }
 ```
 
@@ -57,15 +61,17 @@ List responses include `meta.limit`, `meta.cursor`, `meta.nextCursor`, and `meta
 {
   "data": [
     {
-      "id": "seiyuu_youmiya_hina",
+      "id": "seiyuu:youmiya_hina",
       "key": "youmiya_hina",
-      "name": "羊宮妃那"
+      "name": "羊宮妃那",
+      "agencyKey": "aoni_pro",
+      "careerStatus": "active"
     }
   ],
   "meta": {
     "limit": 100,
     "cursor": "",
-    "nextCursor": null,
+    "nextCursor": "",
     "hasMore": false
   }
 }
