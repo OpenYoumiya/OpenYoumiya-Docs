@@ -34,6 +34,17 @@ This page summarizes the public Event-related models:
 | `createdAt` | string | ✓ | Resource creation time. |
 | `updatedAt` | string | ✓ | Resource update time. |
 
+#### Event.type
+
+| Value | Description |
+| --- | --- |
+| `live` | In-person live performance. |
+| `event` | Festival, release event, combined event, or other general event. |
+| `stage` | Stage play or other staged performance. |
+| `talk` | Talk, panel, or conversational event. |
+| `streaming` | Online stream, broadcast, or web program. |
+| `other` | Other event type. |
+
 ### EventCard
 
 `EventCard` is a read model for list and reference contexts. It starts from `Event` and aggregates classification, schedule, location, and participant data for display.
