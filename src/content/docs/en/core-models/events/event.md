@@ -39,11 +39,14 @@ This page summarizes the public Event-related models:
 | Value | Description |
 | --- | --- |
 | `live` | In-person live performance. |
-| `event` | Festival, release event, combined event, or other general event. |
-| `stage` | Stage play or other staged performance. |
+| `fan_meeting` | Fan meeting. |
+| `release_event` | Release event, commemorative release event, or bonus handover event. |
+| `stage_play` | Stage play or other staged performance. |
+| `festival` | Festival, convention, or combined event. |
+| `broadcast` | Online stream, broadcast, or web program. |
+| `exhibition` | Exhibition event. |
 | `talk` | Talk, panel, or conversational event. |
-| `streaming` | Online stream, broadcast, or web program. |
-| `other` | Other event type. |
+| `others` | Other event type. |
 
 ### EventCard
 

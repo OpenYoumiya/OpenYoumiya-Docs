@@ -39,11 +39,14 @@ Event 是活动主资源。它负责描述活动自身的稳定属性；列表�
 | Value | Description |
 | --- | --- |
 | `live` | 现场演出。 |
-| `event` | 音乐节、综合活动、发售活动或联合活动。 |
-| `stage` | 舞台剧及其他舞台活动。 |
+| `fan_meeting` | 粉丝见面会。 |
+| `release_event` | 发售活动、发售纪念活动或特典会。 |
+| `stage_play` | 舞台剧及其他舞台活动。 |
+| `festival` | 综合展会、音乐节或联合活动。 |
+| `broadcast` | 线上配信、播出或网络节目。 |
+| `exhibition` | 展览活动。 |
 | `talk` | Talk、座谈或谈话活动。 |
-| `streaming` | 线上配信、播出或网络节目。 |
-| `other` | 其他活动类型。 |
+| `others` | 其他活动类型。 |
 
 ### EventCard
 
